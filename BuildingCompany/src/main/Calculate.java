@@ -1,3 +1,4 @@
+package main;
 import buildings.*;
 import interfaces.ICalc;
 import interfaces.ICalculate;

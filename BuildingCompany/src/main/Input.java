@@ -1,3 +1,4 @@
+package main;
 import java.util.Scanner;
 
 import interfaces.IIn;

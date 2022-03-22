@@ -1,3 +1,4 @@
+package main;
 import interfaces.IChange;
 import java.util.Scanner;
 import services.*;
