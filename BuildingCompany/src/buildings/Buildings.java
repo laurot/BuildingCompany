@@ -1,29 +1,33 @@
 package buildings;
+import interfaces.*;
 
-public abstract class Buildings {
+
+public abstract class Buildings implements ICalc{
 
 
-    private float pricePerSqMetre;
+    private float priceMod;
     private float timeMult;
     private float sqMeters;
     private int floors;
 
-    public Buildings(float pricePerSqMetre, float timeMult, int floors, float sqMeters){
-        this.pricePerSqMetre = pricePerSqMetre;
+    public Buildings(float priceMod, float timeMult, int floors, float sqMeters){
+        this.priceMod = priceMod;
         this.timeMult = timeMult;
         this.floors = floors;
         this.sqMeters = sqMeters;
     }
     
-    public float calculatePrice(){
+    @Override 
+    public float calcPrice(float price){
 
-        float total = (pricePerSqMetre*sqMeters*floors);
-        return total;
+        float totalP = (priceMod*sqMeters*floors);
+        return totalP;
     }
 
-    public float calcTime(){
-        float time = (timeMult*floors);
-        return time;
+    @Override 
+    public float calcTime(float time){
+        float totalT = (timeMult*floors*sqMeters);
+        return totalT;
     }
 
 
