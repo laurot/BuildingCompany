@@ -4,35 +4,37 @@ import com.solvd.interfaces.IChange;
 import com.solvd.services.*;
 import com.solvd.weather.*;
 import java.util.Scanner;
+import org.apache.logging.log4j.*;
 
 public class Change implements IChange{
 
     Scanner sc = new Scanner(System.in);
-    
+    private static final Logger LOGGER = LogManager.getLogger();
+
     @Override
     public void changeBuildings() {
         
-        System.out.println("Menu:");
-        System.out.println("Which values do you want to change?");
-        System.out.println("1. Residential");
-        System.out.println("2. Comercial");
-        System.out.println("3. Industrial");
-        System.out.println("0. Exit");
-        System.out.println("select 0-3:");
+        LOGGER.info("Menu:");
+        LOGGER.info("Which values do you want to change?");
+        LOGGER.info("1. Residential");
+        LOGGER.info("2. Comercial");
+        LOGGER.info("3. Industrial");
+        LOGGER.info("0. Exit");
+        LOGGER.info("select 0-3:");
         int newTime;
         float newPrice;
         switch (sc.nextInt()) {
             case 0:
             // Exit
-            System.out.println("Exiting");
+            LOGGER.info("Exiting");
             System.exit(0);
 
             case 1:
                 //Residential
                 Residential.checkValues();
-                System.out.println("Type the new price modifier?");
+                LOGGER.info("Type the new price modifier?");
                 newPrice = sc.nextInt();
-                System.out.println("Type the new time modifier?");
+                LOGGER.info("Type the new time modifier?");
                 newTime = sc.nextInt();
                 Residential.changePrice(newPrice);
                 Residential.changeTime(newTime);
@@ -40,9 +42,9 @@ public class Change implements IChange{
             case 2:
                 //Comercial
                 Comercial.checkValues();
-                System.out.println("Type the new price modifier?");
+                LOGGER.info("Type the new price modifier?");
                 newPrice = sc.nextInt();
-                System.out.println("Type the new time modifier?");
+                LOGGER.info("Type the new time modifier?");
                 newTime = sc.nextInt();
                 Comercial.changePrice(newPrice);
                 Comercial.changeTime(newTime);
@@ -51,16 +53,16 @@ public class Change implements IChange{
             case 3:
                 //Industrial
                 Industrial.checkValues();
-                System.out.println("Type the new price modifier?");
+                LOGGER.info("Type the new price modifier?");
                 newPrice = sc.nextInt();
-                System.out.println("Type the new time modifier?");
+                LOGGER.info("Type the new time modifier?");
                 newTime = sc.nextInt();
                 Industrial.changePrice(newPrice);
                 Industrial.changeTime(newTime);
                 break;
             default:
                 //In case of invalid number, ask again
-                System.out.println("Not valid");
+                LOGGER.warn("Not valid");
                 changeBuildings();
         }
     }
@@ -68,27 +70,27 @@ public class Change implements IChange{
     @Override
     public void changeServices() {
 
-        System.out.println("Menu:");
-        System.out.println("Which values do you want to change?");
-        System.out.println("1. Normal Service");
-        System.out.println("2. Fast Service");
-        System.out.println("3. Luxurious Service");
-        System.out.println("0. Exit");
-        System.out.println("select 0-3:");
+        LOGGER.info("Menu:");
+        LOGGER.info("Which values do you want to change?");
+        LOGGER.info("1. Normal Service");
+        LOGGER.info("2. Fast Service");
+        LOGGER.info("3. Luxurious Service");
+        LOGGER.info("0. Exit");
+        LOGGER.info("select 0-3:");
         int newTime;
         float newPrice;
         switch (sc.nextInt()) {
             case 0:
             // Exit
-            System.out.println("Exiting");
+            LOGGER.info("Exiting");
             System.exit(0);
 
             case 1:
                 //Normal Service
                 NormalService.checkValues();
-                System.out.println("Type the new price modifier?");
+                LOGGER.info("Type the new price modifier?");
                 newPrice = sc.nextInt();
-                System.out.println("Type the new time modifier?");
+                LOGGER.info("Type the new time modifier?");
                 newTime = sc.nextInt();
                 NormalService.changePrice(newPrice);
                 NormalService.changeTime(newTime);
@@ -96,9 +98,9 @@ public class Change implements IChange{
             case 2:
                 //Fast Service
                 FastService.checkValues();
-                System.out.println("Type the new price modifier?");
+                LOGGER.info("Type the new price modifier?");
                 newPrice = sc.nextInt();
-                System.out.println("Type the new time modifier?");
+                LOGGER.info("Type the new time modifier?");
                 newTime = sc.nextInt();
                 FastService.changePrice(newPrice);
                 FastService.changeTime(newTime);
@@ -108,9 +110,9 @@ public class Change implements IChange{
                 
                 //Luxurious Service
                 LuxuriousService.checkValues();
-                System.out.println("Type the new price modifier?");
+                LOGGER.info("Type the new price modifier?");
                 newPrice = sc.nextInt();
-                System.out.println("Type the new time modifier?");
+                LOGGER.info("Type the new time modifier?");
                 newTime = sc.nextInt();
                 LuxuriousService.changePrice(newPrice);
                 LuxuriousService.changeTime(newTime);
@@ -118,7 +120,7 @@ public class Change implements IChange{
                 break;
             default:
                 //In case of invalid number, ask again
-                System.out.println("Not valid");
+                LOGGER.warn("Not valid");
                 changeServices();
         }
         
@@ -126,27 +128,27 @@ public class Change implements IChange{
 
     @Override
     public void changeWeather() {
-        System.out.println("Menu:");
-        System.out.println("Which values do you want to change?");
-        System.out.println("1. Normal Season");
-        System.out.println("2. Rain Season");
-        System.out.println("3. Dry Season");
-        System.out.println("0. Exit");
-        System.out.println("select 0-3:");
+        LOGGER.info("Menu:");
+        LOGGER.info("Which values do you want to change?");
+        LOGGER.info("1. Normal Season");
+        LOGGER.info("2. Rain Season");
+        LOGGER.info("3. Dry Season");
+        LOGGER.info("0. Exit");
+        LOGGER.info("select 0-3:");
         int newTime;
         float newPrice;
         switch (sc.nextInt()) {
             case 0:
             // Exit
-            System.out.println("Exiting");
+            LOGGER.info("Exiting");
             System.exit(0);
 
             case 1:
                 //Normal Season
                 NormalSeason.checkValues();
-                System.out.println("Type the new price modifier?");
+                LOGGER.info("Type the new price modifier?");
                 newPrice = sc.nextInt();
-                System.out.println("Type the new time modifier?");
+                LOGGER.info("Type the new time modifier?");
                 newTime = sc.nextInt();
                 NormalSeason.changePrice(newPrice);
                 NormalSeason.changeTime(newTime);
@@ -154,9 +156,9 @@ public class Change implements IChange{
             case 2:
                 //Rain Season
                 RainSeason.checkValues();
-                System.out.println("Type the new price modifier?");
+                LOGGER.info("Type the new price modifier?");
                 newPrice = sc.nextInt();
-                System.out.println("Type the new time modifier?");
+                LOGGER.info("Type the new time modifier?");
                 newTime = sc.nextInt();
                 RainSeason.changePrice(newPrice);
                 RainSeason.changeTime(newTime);
@@ -165,16 +167,16 @@ public class Change implements IChange{
             case 3:
                 //Dry Season
                 DrySeason.checkValues();
-                System.out.println("Type the new price modifier?");
+                LOGGER.info("Type the new price modifier?");
                 newPrice = sc.nextInt();
-                System.out.println("Type the new time modifier?");
+                LOGGER.info("Type the new time modifier?");
                 newTime = sc.nextInt();
                 DrySeason.changePrice(newPrice);
                 DrySeason.changeTime(newTime);
                 break;
             default:
                 //In case of invalid number, ask again
-                System.out.println("Not valid");
+                LOGGER.warn("Not valid");
                 changeWeather();
         }
         

@@ -1,12 +1,12 @@
 package com.solvd.services;
 import com.solvd.interfaces.ICalc;
-
+import org.apache.logging.log4j.*;
 
 public abstract class Service implements ICalc{
     
     private float priceMod;
     private float timeMod;
-
+    
     public Service(float servPriceMod, float servTimeMod){
         this.priceMod = servPriceMod;
         this.timeMod = servTimeMod;

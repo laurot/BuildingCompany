@@ -3,10 +3,12 @@ import com.solvd.buildings.*;
 import com.solvd.interfaces.*;
 import com.solvd.services.*;
 import com.solvd.weather.*;
-
+import org.apache.logging.log4j.*;
 import java.util.Scanner;
 
 public class Menu {
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     Country country = new Country("Argentina", (float) 1.21);
 
@@ -18,19 +20,19 @@ public class Menu {
 
         int select;
         IIn input = new Input();
-        System.out.println("Menu:");
-        System.out.println("1. Calculate costs");
-        System.out.println("2. Check default values");
-        System.out.println("3. Change default values");
-        System.out.println("4. Change country (Currently in " + country.getName() + ")");
-        System.out.println("0. Exit");
-        System.out.println("select 0-4:");
+        LOGGER.info("Menu:");
+        LOGGER.info("1. Calculate costs");
+        LOGGER.info("2. Check default values");
+        LOGGER.info("3. Change default values");
+        LOGGER.info("4. Change country (Currently in " + country.getName() + ")");
+        LOGGER.info("0. Exit");
+        LOGGER.info("select 0-4:");
         select = sc.nextInt();
 
         switch (select) {
             case 0:
                 // Exit
-                System.out.println("Exiting");
+                LOGGER.info("Exiting");
                 break;
 
             case 1:
@@ -51,15 +53,15 @@ public class Menu {
             case 4:
                 //Change Country
 
-                System.out.println("What country?");
+                LOGGER.info("What country?");
                 String countryName = sc.next();
-                System.out.println("Enter tax Rate (in percentage)");
+                LOGGER.info("Enter tax Rate (in percentage)");
                 float countryRate = (sc.nextFloat() / 100) + 1;
                 country = new Country(countryName, countryRate);
 
             default:
                 //In case of invalid number, ask again
-                System.out.println("Not valid");
+                LOGGER.warn("Not valid");
                 mainMenu();
                 break;
         }
@@ -70,13 +72,13 @@ public class Menu {
 
         int select;
 
-        System.out.println("Menu:");
-        System.out.println("Which values do you want to check?");
-        System.out.println("1. Buildings");
-        System.out.println("2. Services");
-        System.out.println("3. Weather modifiers");
-        System.out.println("0. Exit");
-        System.out.println("select 0-3:");
+        LOGGER.info("Menu:");
+        LOGGER.info("Which values do you want to check?");
+        LOGGER.info("1. Buildings");
+        LOGGER.info("2. Services");
+        LOGGER.info("3. Weather modifiers");
+        LOGGER.info("0. Exit");
+        LOGGER.info("select 0-3:");
         select = sc.nextInt();
 
         switch (select) {
@@ -86,43 +88,43 @@ public class Menu {
 
             case 1:
                 //Buildings
-                System.out.println("----------------------------------------------");
-                System.out.println("Comercial buildings: ");
+                LOGGER.info("----------------------------------------------");
+                LOGGER.info("Comercial buildings: ");
                 Comercial.checkValues();
-                System.out.println("Industrial buildings: ");
+                LOGGER.info("Industrial buildings: ");
                 Industrial.checkValues();
-                System.out.println("Residential buildings: ");
+                LOGGER.info("Residential buildings: ");
                 Residential.checkValues();
-                System.out.println("----------------------------------------------");
+                LOGGER.info("----------------------------------------------");
 
                 break;
             case 2:
                 //Services
-                System.out.println("----------------------------------------------");
-                System.out.println("Normal Service: ");
+                LOGGER.info("----------------------------------------------");
+                LOGGER.info("Normal Service: ");
                 NormalService.checkValues();
-                System.out.println("Fast Service: ");
+                LOGGER.info("Fast Service: ");
                 FastService.checkValues();
-                System.out.println("Luxurious Service: ");
+                LOGGER.info("Luxurious Service: ");
                 LuxuriousService.checkValues();
-                System.out.println("----------------------------------------------");
+                LOGGER.info("----------------------------------------------");
 
                 break;
             case 3:
                 //Weather
-                System.out.println("----------------------------------------------");
-                System.out.println("Normal Season: ");
+                LOGGER.info("----------------------------------------------");
+                LOGGER.info("Normal Season: ");
                 NormalSeason.checkValues();
-                System.out.println("Dry Season: ");
+                LOGGER.info("Dry Season: ");
                 DrySeason.checkValues();
-                System.out.println("Rain Season: ");
+                LOGGER.info("Rain Season: ");
                 RainSeason.checkValues();
-                System.out.println("----------------------------------------------");
+                LOGGER.info("----------------------------------------------");
 
                 break;
             default:
                 //In case of invalid number, ask again
-                System.out.println("Not valid");
+                LOGGER.warn("Not valid");
                 mainMenu();
         }
     }
@@ -130,13 +132,13 @@ public class Menu {
     private void changeMods() {
         int select;
 
-        System.out.println("Menu:");
-        System.out.println("Which values do you want to change?");
-        System.out.println("1. Buildings");
-        System.out.println("2. Services");
-        System.out.println("3. Weather ");
-        System.out.println("0. Back");
-        System.out.println("select 0-3:");
+        LOGGER.info("Menu:");
+        LOGGER.info("Which values do you want to change?");
+        LOGGER.info("1. Buildings");
+        LOGGER.info("2. Services");
+        LOGGER.info("3. Weather ");
+        LOGGER.info("0. Back");
+        LOGGER.info("select 0-3:");
         select = sc.nextInt();
 
         switch (select) {
@@ -157,7 +159,7 @@ public class Menu {
                 break;
             default:
                 //In case of invalid number, ask again
-                System.out.println("Not valid");
+                LOGGER.warn("Not valid");
                 mainMenu();
         }
     }

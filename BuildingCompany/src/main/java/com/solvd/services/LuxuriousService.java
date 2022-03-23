@@ -1,7 +1,10 @@
 package com.solvd.services;
 
+import org.apache.logging.log4j.*;
+
 public class LuxuriousService extends Service{
 
+    private static final Logger LOGGER = LogManager.getLogger();
     private static float priceMod = 3;
     private static float timeMod = 2;
 
@@ -12,8 +15,8 @@ public class LuxuriousService extends Service{
 
     public static void checkValues() {
 
-        System.out.println("The price modifier is set to:" + priceMod);
-        System.out.println("The time modifier is set to:" + timeMod);
+        LOGGER.info("The price modifier is set to:" + priceMod);
+        LOGGER.info("The time modifier is set to:" + timeMod);
     }
 
 

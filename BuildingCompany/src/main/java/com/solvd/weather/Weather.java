@@ -1,7 +1,6 @@
 package com.solvd.weather;
 import com.solvd.interfaces.ICalc;
 
-
 public abstract class Weather implements ICalc{
     
     private float weatherPriceMod;

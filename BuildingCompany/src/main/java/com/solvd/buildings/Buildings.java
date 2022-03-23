@@ -1,7 +1,6 @@
 package com.solvd.buildings;
 import com.solvd.interfaces.*;
 
-
 public abstract class Buildings implements ICalc{
 
 

@@ -5,9 +5,12 @@ import com.solvd.interfaces.ICalculate;
 import com.solvd.interfaces.ITax;
 import com.solvd.services.*;
 import com.solvd.weather.*;
-
+import org.apache.logging.log4j.*;
 
 public class Calculate implements ICalculate{
+
+    private static final Logger LOGGER = LogManager.getLogger();
+
     public void calculate(int buildType,int weather, int serviceType, int floors, float sqMeters, ITax country) {
         float time = 0;
         float price = 0;
@@ -71,9 +74,9 @@ public class Calculate implements ICalculate{
                 price = normS.calcPrice(price);
             }
         }
-        System.out.println("----------------------------------------------");
-        System.out.println("The price of building is: $" + country.tax(price));
-        System.out.println("The time it will take is: " + time +" days");
-        System.out.println("----------------------------------------------");
+        LOGGER.info("----------------------------------------------");
+        LOGGER.info("The price of building is: $" + country.tax(price));
+        LOGGER.info("The time it will take is: " + time +" days");
+        LOGGER.info("----------------------------------------------");
     }
 }

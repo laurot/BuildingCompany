@@ -1,21 +1,22 @@
 package com.solvd;
 
 import java.util.Scanner;
-
+import org.apache.logging.log4j.*;
 import com.solvd.interfaces.IIn;
 
 public class Input implements IIn {
     static Scanner sc = new Scanner(System.in);
 
+    private static final Logger LOGGER = LogManager.getLogger();
     @Override
     public int askBuildingType() {
         int select;
 
-        System.out.println("What kind of building?");
-        System.out.println("1. Comercial");
-        System.out.println("2. Residential");
-        System.out.println("3. Industrial");
-        System.out.println("select 0-3:");
+        LOGGER.info("What kind of building?");
+        LOGGER.info("1. Comercial");
+        LOGGER.info("2. Residential");
+        LOGGER.info("3. Industrial");
+        LOGGER.info("select 0-3:");
         select = sc.nextInt();
 
         switch (select) {
@@ -24,7 +25,7 @@ public class Input implements IIn {
                 break;
             default:
                 //In case of invalid number, ask again
-                System.out.println("Not valid");
+                LOGGER.warn("Not valid");
                 askBuildingType();
         }
         return select;
@@ -34,11 +35,11 @@ public class Input implements IIn {
     public int askServiceType() {
         int select;
 
-        System.out.println("What kind of service?");
-        System.out.println("1. Normal");
-        System.out.println("2. Fast");
-        System.out.println("3. Luxurious");
-        System.out.println("select 0-3:");
+        LOGGER.info("What kind of service?");
+        LOGGER.info("1. Normal");
+        LOGGER.info("2. Fast");
+        LOGGER.info("3. Luxurious");
+        LOGGER.info("select 0-3:");
         select = sc.nextInt();
 
         switch (select) {
@@ -47,7 +48,7 @@ public class Input implements IIn {
                 break;
             default:
                 //In case of invalid number, ask again
-                System.out.println("Not valid");
+                LOGGER.warn("Not valid");
                 askServiceType();
         }
 
@@ -58,11 +59,11 @@ public class Input implements IIn {
     public int askWeather() {
         int select;
 
-        System.out.println("What kind of weather?");
-        System.out.println("1. Normal Season");
-        System.out.println("2. Rainy Season");
-        System.out.println("3. Dry Season");
-        System.out.println("select 0-3:");
+        LOGGER.info("What kind of weather?");
+        LOGGER.info("1. Normal Season");
+        LOGGER.info("2. Rainy Season");
+        LOGGER.info("3. Dry Season");
+        LOGGER.info("select 0-3:");
         select = sc.nextInt();
 
         switch (select) {
@@ -71,7 +72,7 @@ public class Input implements IIn {
                 break;
             default:
                 //In case of invalid number, ask again
-                System.out.println("Not valid");
+                LOGGER.warn("Not valid");
                 askWeather();
         }
 
@@ -82,7 +83,7 @@ public class Input implements IIn {
     public float askSqMetres() {
 
         int sqMetres;
-        System.out.println("How many square metres?");
+        LOGGER.info("How many square metres?");
         sqMetres = sc.nextInt();
 
         return sqMetres;
@@ -92,7 +93,7 @@ public class Input implements IIn {
     public int askFloors() {
 
         int floors;
-        System.out.println("How many floors?");
+        LOGGER.info("How many floors?");
         floors = sc.nextInt();
 
         return floors;

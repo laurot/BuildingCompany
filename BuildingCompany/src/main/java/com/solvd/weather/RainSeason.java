@@ -1,7 +1,10 @@
 package com.solvd.weather;
 
+import org.apache.logging.log4j.*;
+
 public class RainSeason extends Weather{
 
+    private static final Logger LOGGER = LogManager.getLogger();
     private static float priceMod = (float) 1.5;
     private static float timeMod = (float) 2.5;
 
@@ -12,8 +15,8 @@ public class RainSeason extends Weather{
 
     public static void checkValues() {
 
-        System.out.println("The price modifier is set to:" + priceMod);
-        System.out.println("The time modifier is set to:" + timeMod);
+        LOGGER.info("The price modifier is set to:" + priceMod);
+        LOGGER.info("The time modifier is set to:" + timeMod);
     }
 
     public static void changePrice(float priceMod) {
