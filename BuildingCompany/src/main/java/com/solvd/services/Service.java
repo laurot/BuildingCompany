@@ -1,6 +1,5 @@
 package com.solvd.services;
 import com.solvd.interfaces.ICalc;
-import org.apache.logging.log4j.*;
 
 public abstract class Service implements ICalc{
     

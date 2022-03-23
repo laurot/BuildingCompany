@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private static final Logger LOGGER = LogManager.getLogger();
+    private final static Logger LOGGER = LogManager.getLogger(Menu.class);
 
     Country country = new Country("Argentina", (float) 1.21);
 
@@ -53,11 +53,18 @@ public class Menu {
             case 4:
                 //Change Country
 
-                LOGGER.info("What country?");
-                String countryName = sc.next();
-                LOGGER.info("Enter tax Rate (in percentage)");
-                float countryRate = (sc.nextFloat() / 100) + 1;
-                country = new Country(countryName, countryRate);
+                try {
+                    
+                    LOGGER.info("What country?");
+                    String countryName = sc.next();
+                    LOGGER.info("Enter tax Rate (in percentage)");
+                    float countryRate = (sc.nextFloat() / 100) + 1;
+                    country = new Country(countryName, countryRate);
+
+                } catch (Exception e) {
+                    
+                }
+
 
             default:
                 //In case of invalid number, ask again

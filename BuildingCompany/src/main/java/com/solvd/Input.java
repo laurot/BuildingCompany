@@ -6,8 +6,8 @@ import com.solvd.interfaces.IIn;
 
 public class Input implements IIn {
     static Scanner sc = new Scanner(System.in);
-
     private static final Logger LOGGER = LogManager.getLogger();
+    
     @Override
     public int askBuildingType() {
         int select;
