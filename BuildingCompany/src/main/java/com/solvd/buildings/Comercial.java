@@ -1,4 +1,4 @@
-package main.java.com.solvd.buildings;
+package com.solvd.buildings;
 
 public class Comercial extends Buildings  {
     private static float priceMod = 400;

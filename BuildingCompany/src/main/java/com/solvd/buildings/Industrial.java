@@ -1,4 +1,4 @@
-package main.java.com.solvd.buildings;
+package com.solvd.buildings;
 
 public class Industrial extends Buildings {
 

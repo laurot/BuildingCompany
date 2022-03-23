@@ -1,5 +1,5 @@
-package main.java.com.solvd.weather;
-import main.java.com.solvd.interfaces.ICalc;
+package com.solvd.weather;
+import com.solvd.interfaces.ICalc;
 
 
 public abstract class Weather implements ICalc{

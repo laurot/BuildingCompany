@@ -1,5 +1,5 @@
-package main.java.com.solvd;
-import main.java.com.solvd.interfaces.ITax;
+package com.solvd;
+import com.solvd.interfaces.ITax;
 
 public class Country implements ITax{
     

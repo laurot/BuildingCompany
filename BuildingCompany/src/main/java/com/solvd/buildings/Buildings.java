@@ -1,5 +1,5 @@
-package main.java.com.solvd.buildings;
-import main.java.com.solvd.interfaces.*;
+package com.solvd.buildings;
+import com.solvd.interfaces.*;
 
 
 public abstract class Buildings implements ICalc{

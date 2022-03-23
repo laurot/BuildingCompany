@@ -1,4 +1,4 @@
-package main.java.com.solvd.weather;
+package com.solvd.weather;
 
 public class RainSeason extends Weather{
 

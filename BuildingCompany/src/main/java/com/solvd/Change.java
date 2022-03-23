@@ -1,9 +1,8 @@
-package main.java.com.solvd;
-import main.java.com.solvd.buildings.*;
-import main.java.com.solvd.interfaces.IChange;
-import main.java.com.solvd.services.*;
-import main.java.com.solvd.weather.*;
-
+package com.solvd;
+import com.solvd.buildings.*;
+import com.solvd.interfaces.IChange;
+import com.solvd.services.*;
+import com.solvd.weather.*;
 import java.util.Scanner;
 
 public class Change implements IChange{

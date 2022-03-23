@@ -1,4 +1,4 @@
-package main.java.com.solvd.services;
+package com.solvd.services;
 
 public class LuxuriousService extends Service{
 

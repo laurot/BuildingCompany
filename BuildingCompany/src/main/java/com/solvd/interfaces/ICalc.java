@@ -1,4 +1,4 @@
-package main.java.com.solvd.interfaces;
+package com.solvd.interfaces;
 public interface ICalc {
     
     //Calculates the price and time depending on the modifiers and the variable sent

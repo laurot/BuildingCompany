@@ -1,5 +1,5 @@
-package main.java.com.solvd.services;
-import main.java.com.solvd.interfaces.ICalc;
+package com.solvd.services;
+import com.solvd.interfaces.ICalc;
 
 
 public abstract class Service implements ICalc{

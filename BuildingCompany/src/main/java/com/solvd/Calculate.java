@@ -1,11 +1,10 @@
 package com.solvd;
-
-import main.java.com.solvd.buildings.*;
-import main.java.com.solvd.interfaces.ICalc;
-import main.java.com.solvd.interfaces.ICalculate;
-import main.java.com.solvd.interfaces.ITax;
-import main.java.com.solvd.services.*;
-import main.java.com.solvd.weather.*;
+import com.solvd.buildings.*;
+import com.solvd.interfaces.ICalc;
+import com.solvd.interfaces.ICalculate;
+import com.solvd.interfaces.ITax;
+import com.solvd.services.*;
+import com.solvd.weather.*;
 
 
 public class Calculate implements ICalculate{

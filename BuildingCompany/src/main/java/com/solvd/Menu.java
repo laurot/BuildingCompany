@@ -1,41 +1,42 @@
-package main.java.com.solvd;
+package com.solvd;
+import com.solvd.buildings.*;
+import com.solvd.interfaces.*;
+import com.solvd.services.*;
+import com.solvd.weather.*;
+
 import java.util.Scanner;
 
-import main.java.com.solvd.buildings.*;
-import main.java.com.solvd.interfaces.*;
-import main.java.com.solvd.services.*;
-import main.java.com.solvd.weather.*;
-
-public class Menu{
+public class Menu {
 
     Country country = new Country("Argentina", (float) 1.21);
-    
+
     static Scanner sc = new Scanner(System.in);
     static IChange change = new Change();
     ICalculate calc = new Calculate();
-    public void mainMenu(){
-        
+
+    public int mainMenu() {
+
         int select;
         IIn input = new Input();
         System.out.println("Menu:");
         System.out.println("1. Calculate costs");
         System.out.println("2. Check default values");
         System.out.println("3. Change default values");
-        System.out.println("4. Change country (Currently in "+ country.getName()+")");
+        System.out.println("4. Change country (Currently in " + country.getName() + ")");
         System.out.println("0. Exit");
         System.out.println("select 0-4:");
         select = sc.nextInt();
 
         switch (select) {
             case 0:
-            // Exit
-            System.out.println("Exiting");
-            System.exit(0);
+                // Exit
+                System.out.println("Exiting");
+                break;
 
             case 1:
                 //Calculate time and cost
                 calc.calculate(input.askBuildingType(), input.askWeather(), input.askServiceType(),
-                                input.askFloors(), input.askSqMetres(), country);
+                        input.askFloors(), input.askSqMetres(), country);
                 break;
 
             case 2:
@@ -53,17 +54,19 @@ public class Menu{
                 System.out.println("What country?");
                 String countryName = sc.next();
                 System.out.println("Enter tax Rate (in percentage)");
-                float countryRate = (sc.nextFloat()/100)+1;
+                float countryRate = (sc.nextFloat() / 100) + 1;
                 country = new Country(countryName, countryRate);
-                
+
             default:
                 //In case of invalid number, ask again
                 System.out.println("Not valid");
                 mainMenu();
+                break;
         }
+        return select;
     }
 
-    private void checkValues(){
+    private void checkValues() {
 
         int select;
 

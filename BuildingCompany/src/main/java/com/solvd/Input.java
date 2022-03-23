@@ -1,9 +1,10 @@
-package main.java.com.solvd;
+package com.solvd;
+
 import java.util.Scanner;
 
-import main.java.com.solvd.interfaces.IIn;
+import com.solvd.interfaces.IIn;
 
-public class Input  implements IIn{
+public class Input implements IIn {
     static Scanner sc = new Scanner(System.in);
 
     @Override
@@ -18,7 +19,7 @@ public class Input  implements IIn{
         select = sc.nextInt();
 
         switch (select) {
-            case 1,2,3:
+            case 1, 2, 3:
                 //Accepted buildings
                 break;
             default:
@@ -30,7 +31,7 @@ public class Input  implements IIn{
     }
 
     @Override
-    public int askServiceType(){
+    public int askServiceType() {
         int select;
 
         System.out.println("What kind of service?");
@@ -41,7 +42,7 @@ public class Input  implements IIn{
         select = sc.nextInt();
 
         switch (select) {
-            case 1,2,3:
+            case 1, 2, 3:
                 //Accepted Services
                 break;
             default:
@@ -54,7 +55,7 @@ public class Input  implements IIn{
     }
 
     @Override
-    public int askWeather(){
+    public int askWeather() {
         int select;
 
         System.out.println("What kind of weather?");
@@ -65,7 +66,7 @@ public class Input  implements IIn{
         select = sc.nextInt();
 
         switch (select) {
-            case 1,2,3:
+            case 1, 2, 3:
                 //Accepted Seasons
                 break;
             default:
