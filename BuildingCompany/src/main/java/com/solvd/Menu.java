@@ -8,11 +8,12 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private final static Logger LOGGER = LogManager.getLogger(Menu.class);
+    private final static Logger LOGGER = LogManager.getLogger();
 
     Country country = new Country("Argentina", (float) 1.21);
 
     static Scanner sc = new Scanner(System.in);
+    
     static IChange change = new Change();
     ICalculate calc = new Calculate();
 
