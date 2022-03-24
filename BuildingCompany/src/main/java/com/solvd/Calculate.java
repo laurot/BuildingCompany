@@ -1,5 +1,8 @@
 package com.solvd;
 import com.solvd.buildings.*;
+import com.solvd.exceptions.NegativeNumberException;
+import com.solvd.exceptions.NotValidOptionException;
+import com.solvd.exceptions.TooManyFloorsException;
 import com.solvd.interfaces.ICalc;
 import com.solvd.interfaces.ICalculate;
 import com.solvd.interfaces.ITax;
@@ -11,9 +14,18 @@ public class Calculate implements ICalculate{
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public void calculate(int buildType,int weather, int serviceType, int floors, float sqMeters, ITax country) {
+    public void calculate(ITax country) throws NotValidOptionException, NegativeNumberException, TooManyFloorsException {
+        
+        Input input = new Input();
         float time = 0;
         float price = 0;
+        
+        int buildType = input.askBuildingType();
+        int weather = input.askWeather();
+        int serviceType = input.askServiceType();
+        int floors = input.askFloors();
+        float sqMeters = input.askSqMetres();
+
         switch (buildType) {
             case 2 -> {
                 //Residential

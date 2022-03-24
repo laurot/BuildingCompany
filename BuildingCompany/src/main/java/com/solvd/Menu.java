@@ -1,5 +1,6 @@
 package com.solvd;
 import com.solvd.buildings.*;
+import com.solvd.exceptions.*;
 import com.solvd.interfaces.*;
 import com.solvd.services.*;
 import com.solvd.weather.*;
@@ -20,7 +21,7 @@ public class Menu {
     public int mainMenu() {
 
         int select;
-        IIn input = new Input();
+        LOGGER.info("----------------------------------------------");
         LOGGER.info("Menu:");
         LOGGER.info("1. Calculate costs");
         LOGGER.info("2. Check default values");
@@ -28,6 +29,8 @@ public class Menu {
         LOGGER.info("4. Change country (Currently in " + country.getName() + ")");
         LOGGER.info("0. Exit");
         LOGGER.info("select 0-4:");
+        LOGGER.info("----------------------------------------------");
+        try{
         select = sc.nextInt();
 
         switch (select) {
@@ -38,8 +41,7 @@ public class Menu {
 
             case 1:
                 //Calculate time and cost
-                calc.calculate(input.askBuildingType(), input.askWeather(), input.askServiceType(),
-                        input.askFloors(), input.askSqMetres(), country);
+                calc.calculate(country);
                 break;
 
             case 2:
@@ -52,31 +54,33 @@ public class Menu {
                 changeMods();
                 break;
             case 4:
-                //Change Country
-
-                try {
-                    
-                    LOGGER.info("What country?");
-                    String countryName = sc.next();
-                    LOGGER.info("Enter tax Rate (in percentage)");
-                    float countryRate = (sc.nextFloat() / 100) + 1;
-                    country = new Country(countryName, countryRate);
-
-                } catch (Exception e) {
-                    
-                }
-
-
+                //Change Country 
+                country = change.changeCountry();
+                
+                break;
             default:
                 //In case of invalid number, ask again
-                LOGGER.warn("Not valid");
-                mainMenu();
-                break;
+                throw new NotValidOptionException();
         }
+        
         return select;
+        } catch (CountryNameException e) {
+            LOGGER.warn("Countries must not have numbers in the name");
+        } catch (NotValidPercentageException a) {
+            LOGGER.warn("That's not a valid percentage (0 - 100");
+        } catch (NotValidOptionException o) {
+            LOGGER.warn("That's not one of the valid options");
+        } catch (NegativeNumberException n) {
+            LOGGER.warn("Negative numbers are not accepted in that field");
+        } catch (TooManyFloorsException t) {
+            LOGGER.warn("This company can only build up to 26 floors");
+        }
+        
+        
+        return 1;
     }
 
-    private void checkValues() {
+    private void checkValues() throws NotValidOptionException {
 
         int select;
 
@@ -132,12 +136,11 @@ public class Menu {
                 break;
             default:
                 //In case of invalid number, ask again
-                LOGGER.warn("Not valid");
-                mainMenu();
+                throw new NotValidOptionException();
         }
     }
 
-    private void changeMods() {
+    private void changeMods() throws NotValidOptionException, NegativeNumberException {
         int select;
 
         LOGGER.info("Menu:");
@@ -167,8 +170,7 @@ public class Menu {
                 break;
             default:
                 //In case of invalid number, ask again
-                LOGGER.warn("Not valid");
-                mainMenu();
+                throw new NotValidOptionException();
         }
     }
 }

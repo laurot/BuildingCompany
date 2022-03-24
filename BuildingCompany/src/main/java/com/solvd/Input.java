@@ -2,6 +2,10 @@ package com.solvd;
 
 import java.util.Scanner;
 import org.apache.logging.log4j.*;
+
+import com.solvd.exceptions.NegativeNumberException;
+import com.solvd.exceptions.NotValidOptionException;
+import com.solvd.exceptions.TooManyFloorsException;
 import com.solvd.interfaces.IIn;
 
 public class Input implements IIn {
@@ -9,7 +13,7 @@ public class Input implements IIn {
     private static final Logger LOGGER = LogManager.getLogger();
     
     @Override
-    public int askBuildingType() {
+    public int askBuildingType() throws NotValidOptionException {
         int select;
 
         LOGGER.info("What kind of building?");
@@ -24,15 +28,15 @@ public class Input implements IIn {
                 //Accepted buildings
                 break;
             default:
-                //In case of invalid number, ask again
-                LOGGER.warn("Not valid");
-                askBuildingType();
+                //In case of invalid number, Exception
+                throw new NotValidOptionException();
+                
         }
         return select;
     }
 
     @Override
-    public int askServiceType() {
+    public int askServiceType() throws NotValidOptionException {
         int select;
 
         LOGGER.info("What kind of service?");
@@ -47,16 +51,15 @@ public class Input implements IIn {
                 //Accepted Services
                 break;
             default:
-                //In case of invalid number, ask again
-                LOGGER.warn("Not valid");
-                askServiceType();
+                //In case of invalid number, Exception
+                throw new NotValidOptionException();
         }
 
         return select;
     }
 
     @Override
-    public int askWeather() {
+    public int askWeather() throws NotValidOptionException {
         int select;
 
         LOGGER.info("What kind of weather?");
@@ -71,31 +74,32 @@ public class Input implements IIn {
                 //Accepted Seasons
                 break;
             default:
-                //In case of invalid number, ask again
-                LOGGER.warn("Not valid");
-                askWeather();
+                //In case of invalid number, Exception
+                throw new NotValidOptionException();
+                
         }
 
         return select;
     }
 
     @Override
-    public float askSqMetres() {
+    public float askSqMetres() throws NegativeNumberException {
 
         int sqMetres;
         LOGGER.info("How many square metres?");
         sqMetres = sc.nextInt();
-
+        if (sqMetres < 1) throw new NegativeNumberException();
         return sqMetres;
     }
 
     @Override
-    public int askFloors() {
+    public int askFloors() throws NegativeNumberException, TooManyFloorsException {
 
         int floors;
         LOGGER.info("How many floors?");
         floors = sc.nextInt();
-
+        if (floors < 1) throw new NegativeNumberException();
+        if (floors > 26) throw new TooManyFloorsException();
         return floors;
     }
 }

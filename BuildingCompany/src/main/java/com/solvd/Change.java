@@ -1,5 +1,9 @@
 package com.solvd;
 import com.solvd.buildings.*;
+import com.solvd.exceptions.CountryNameException;
+import com.solvd.exceptions.NegativeNumberException;
+import com.solvd.exceptions.NotValidOptionException;
+import com.solvd.exceptions.NotValidPercentageException;
 import com.solvd.interfaces.IChange;
 import com.solvd.services.*;
 import com.solvd.weather.*;
@@ -12,7 +16,7 @@ public class Change implements IChange{
     private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
-    public void changeBuildings() {
+    public void changeBuildings() throws NotValidOptionException {
         
         LOGGER.info("Menu:");
         LOGGER.info("Which values do you want to change?");
@@ -62,13 +66,12 @@ public class Change implements IChange{
                 break;
             default:
                 //In case of invalid number, ask again
-                LOGGER.warn("Not valid");
-                changeBuildings();
+                throw new NotValidOptionException();
         }
     }
 
     @Override
-    public void changeServices() {
+    public void changeServices() throws  NotValidOptionException {
 
         LOGGER.info("Menu:");
         LOGGER.info("Which values do you want to change?");
@@ -120,14 +123,13 @@ public class Change implements IChange{
                 break;
             default:
                 //In case of invalid number, ask again
-                LOGGER.warn("Not valid");
-                changeServices();
+                throw new NotValidOptionException();
         }
         
     }
 
     @Override
-    public void changeWeather() {
+    public void changeWeather() throws NotValidOptionException, NegativeNumberException {
         LOGGER.info("Menu:");
         LOGGER.info("Which values do you want to change?");
         LOGGER.info("1. Normal Season");
@@ -148,6 +150,7 @@ public class Change implements IChange{
                 NormalSeason.checkValues();
                 LOGGER.info("Type the new price modifier?");
                 newPrice = sc.nextInt();
+                if (newPrice <= 0) throw new NegativeNumberException();
                 LOGGER.info("Type the new time modifier?");
                 newTime = sc.nextInt();
                 NormalSeason.changePrice(newPrice);
@@ -176,10 +179,37 @@ public class Change implements IChange{
                 break;
             default:
                 //In case of invalid number, ask again
-                LOGGER.warn("Not valid");
-                changeWeather();
+                throw new NotValidOptionException();
         }
         
     }
+
+    @Override
+    public Country changeCountry() throws CountryNameException, NotValidPercentageException {
+        LOGGER.info("What country?");
+        String countryName = sc.next();
+        if (hasNumbers(countryName)) throw new CountryNameException();
+        LOGGER.info("Enter tax Rate (in percentage)");
+        float countryRate = (sc.nextFloat() / 100) + 1;
+        if (countryRate < 0 || countryRate > 1) throw new NotValidPercentageException();
+        
+
+        Country country = new Country(countryName, countryRate);
+        return country;
+    }
     
+
+    
+    
+    private boolean hasNumbers(String string) {
+        char[] chars = string.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for(char c : chars){
+            if(Character.isDigit(c)){
+                sb.append(c);
+            }
+        }
+        if(sb.toString() != "") return true;
+        return false;
+    }
 }

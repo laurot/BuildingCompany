@@ -1,12 +1,16 @@
 package com.solvd.interfaces;
 
+import com.solvd.exceptions.NegativeNumberException;
+import com.solvd.exceptions.NotValidOptionException;
+import com.solvd.exceptions.TooManyFloorsException;
+
 public interface IIn {
 
     //Ask for an option from a set of choices
-    int askBuildingType();
-    int askServiceType();
-    int askWeather();
+    int askBuildingType() throws NotValidOptionException;
+    int askServiceType() throws NotValidOptionException;
+    int askWeather() throws NotValidOptionException;
     //Ask for a value to use later
-    float askSqMetres();
-    int askFloors();
+    float askSqMetres() throws NegativeNumberException;
+    int askFloors() throws NegativeNumberException, TooManyFloorsException;
 }
