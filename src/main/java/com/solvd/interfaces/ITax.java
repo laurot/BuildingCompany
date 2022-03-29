@@ -1,7 +1,7 @@
 package com.solvd.interfaces;
 
-public interface ITax <Type>{
+public interface ITax {
     
     //Add country's taxes
-    Type tax(Type price);
+    float tax(float price);
 }

@@ -1,5 +1,5 @@
 package com.solvd.exceptions;
 
-public class TooManyFloorsException extends Exception {
+public class TooManyFloorsException extends RuntimeException {
     
 }

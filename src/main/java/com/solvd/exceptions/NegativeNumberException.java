@@ -1,6 +1,6 @@
 package com.solvd.exceptions;
 
-public class NegativeNumberException extends Exception {
+public class NegativeNumberException extends RuntimeException {
     
     public NegativeNumberException(){
 

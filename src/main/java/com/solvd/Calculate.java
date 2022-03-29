@@ -2,6 +2,7 @@ package com.solvd;
 import com.solvd.buildings.*;
 import com.solvd.exceptions.*;
 import com.solvd.interfaces.ICalculate;
+import com.solvd.interfaces.ITax;
 import com.solvd.services.*;
 import com.solvd.weather.*;
 import org.apache.logging.log4j.*;
@@ -10,7 +11,7 @@ public class Calculate implements ICalculate{
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public void calculate(Country country) throws NotValidOptionException, NegativeNumberException, TooManyFloorsException {
+    public void calculate(ITax country) throws NotValidOptionException, NegativeNumberException, TooManyFloorsException {
         
         Input input = new Input();
         Float time = (float) 0;
