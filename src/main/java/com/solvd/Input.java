@@ -23,7 +23,7 @@ public class Input implements IIn <Float>{
         LOGGER.info("select 0-3:");
         select = sc.nextInt();
 
-        if (select >= 3 || select <= 1) throw new NotValidOptionException();
+        if (select > 3 || select < 1) throw new NotValidOptionException();
         
         return select;
     }
@@ -39,7 +39,7 @@ public class Input implements IIn <Float>{
         LOGGER.info("select 0-3:");
         select = sc.nextInt();
 
-        if (select >= 3 || select <= 1) throw new NotValidOptionException();
+        if (select > 3 || select < 1) throw new NotValidOptionException();
 
         return select;
     }
@@ -56,7 +56,7 @@ public class Input implements IIn <Float>{
         select = sc.nextInt();
 
 
-        if (select >= 3 || select <= 1) throw new NotValidOptionException();
+        if (select > 3 || select < 1) throw new NotValidOptionException();
 
 
         return select;
