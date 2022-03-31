@@ -1,8 +1,10 @@
 package com.solvd;
+
 import com.solvd.buildings.*;
 import com.solvd.exceptions.*;
 import com.solvd.interfaces.ICalculate;
 import com.solvd.interfaces.ITax;
+import com.solvd.language.ILanguage;
 import com.solvd.services.*;
 import com.solvd.weather.*;
 import org.apache.logging.log4j.*;
@@ -11,17 +13,17 @@ public class Calculate implements ICalculate{
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public void calculate(ITax country) throws NotValidOptionException, NegativeNumberException, TooManyFloorsException {
+    public void calculate(ITax country, ILanguage lang) throws NotValidOptionException, NegativeNumberException, TooManyFloorsException {
         
         Input input = new Input();
         Float time = (float) 0;
         Float price = (float) 0;
         
-        int buildType = input.askBuildingType();
-        int weather = input.askWeather();
-        int serviceType = input.askServiceType();
-        int floors = input.askFloors();
-        float sqMeters = input.askSqMetres();
+        int buildType = input.askBuildingType(lang);
+        int weather = input.askWeather(lang);
+        int serviceType = input.askServiceType(lang);
+        int floors = input.askFloors(lang);
+        float sqMeters = input.askSqMetres(lang);
 
         switch (buildType) {
             case 2:
@@ -84,8 +86,8 @@ public class Calculate implements ICalculate{
             
         }
         LOGGER.info("----------------------------------------------");
-        LOGGER.info("The price of building is: $" + country.tax(price));
-        LOGGER.info("The time it will take is: " + time +" days");
+        LOGGER.info(lang.getCalculateAndText().get("priceText") + country.tax(price));
+        LOGGER.info(lang.getCalculateAndText().get("timeText") + time + lang.getCalculateAndText().get("days"));
         LOGGER.info("----------------------------------------------");
     }
 }

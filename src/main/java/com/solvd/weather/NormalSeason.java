@@ -1,6 +1,8 @@
 package com.solvd.weather;
 
 import org.apache.logging.log4j.*;
+import com.solvd.language.ILanguage;
+
 
 public class NormalSeason extends Weather{
 
@@ -13,23 +15,21 @@ public class NormalSeason extends Weather{
     }
 
 
-    public static void checkValues() {
+    public static void checkValues(ILanguage lang) {
 
-        LOGGER.info("The price modifier is set to:" + priceMod);
-        LOGGER.info("The time modifier is set to:" + timeMod);
+        LOGGER.info(lang.getCalculateAndText().get("priceSetted") + priceMod);
+        LOGGER.info(lang.getCalculateAndText().get("timeSetted") + timeMod);
     }
 
     public static void changePrice(float priceMod) {
 
         NormalSeason.priceMod = priceMod;
-        checkValues();
         
     }
 
     public static void changeTime(float timeMod) {
 
         NormalSeason.timeMod = timeMod;
-        checkValues();
         
     }
 }

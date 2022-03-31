@@ -5,6 +5,7 @@ import com.solvd.exceptions.NegativeNumberException;
 import com.solvd.exceptions.NotValidOptionException;
 import com.solvd.exceptions.NotValidPercentageException;
 import com.solvd.interfaces.IChange;
+import com.solvd.language.ILanguage;
 import com.solvd.services.*;
 import com.solvd.weather.*;
 import java.util.Scanner;
@@ -16,15 +17,15 @@ public class Change implements IChange{
     private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
-    public void changeBuildings() throws NotValidOptionException {
+    public void changeBuildings(ILanguage lang) throws NotValidOptionException {
         
-        LOGGER.info("Menu:");
-        LOGGER.info("Which values do you want to change?");
-        LOGGER.info("1. Residential");
-        LOGGER.info("2. Comercial");
-        LOGGER.info("3. Industrial");
-        LOGGER.info("0. Exit");
-        LOGGER.info("select 0-3:");
+        LOGGER.info(lang.getChangeText().get("menu"));
+        LOGGER.info(lang.getChangeText().get("which"));
+        LOGGER.info(lang.getChangeText().get("comercial"));
+        LOGGER.info(lang.getChangeText().get("residential"));
+        LOGGER.info(lang.getChangeText().get("industrial"));
+        LOGGER.info(lang.getChangeText().get("exit"));
+        LOGGER.info(lang.getChangeText().get("select"));
         int newTime;
         float newPrice;
         switch (sc.nextInt()) {
@@ -34,32 +35,33 @@ public class Change implements IChange{
             System.exit(0);
 
             case 1:
-                //Residential
-                Residential.checkValues();
-                LOGGER.info("Type the new price modifier?");
-                newPrice = sc.nextInt();
-                LOGGER.info("Type the new time modifier?");
-                newTime = sc.nextInt();
-                Residential.changePrice(newPrice);
-                Residential.changeTime(newTime);
-                break;
-            case 2:
                 //Comercial
-                Comercial.checkValues();
-                LOGGER.info("Type the new price modifier?");
+                Comercial.checkValues(lang);
+                LOGGER.info(lang.getChangeText().get("newprice"));
                 newPrice = sc.nextInt();
-                LOGGER.info("Type the new time modifier?");
+                LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextInt();
                 Comercial.changePrice(newPrice);
                 Comercial.changeTime(newTime);
+                
+                break;
+            case 2:
+                //Residential
+                Residential.checkValues(lang);
+                LOGGER.info(lang.getChangeText().get("newprice"));
+                newPrice = sc.nextInt();
+                LOGGER.info(lang.getChangeText().get("newtime"));
+                newTime = sc.nextInt();
+                Residential.changePrice(newPrice);
+                Residential.changeTime(newTime);
 
                 break;
             case 3:
                 //Industrial
-                Industrial.checkValues();
-                LOGGER.info("Type the new price modifier?");
+                Industrial.checkValues(lang);
+                LOGGER.info(lang.getChangeText().get("newprice"));
                 newPrice = sc.nextInt();
-                LOGGER.info("Type the new time modifier?");
+                LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextInt();
                 Industrial.changePrice(newPrice);
                 Industrial.changeTime(newTime);
@@ -71,15 +73,15 @@ public class Change implements IChange{
     }
 
     @Override
-    public void changeServices() throws  NotValidOptionException {
+    public void changeServices(ILanguage lang) throws  NotValidOptionException {
 
-        LOGGER.info("Menu:");
-        LOGGER.info("Which values do you want to change?");
-        LOGGER.info("1. Normal Service");
-        LOGGER.info("2. Fast Service");
-        LOGGER.info("3. Luxurious Service");
-        LOGGER.info("0. Exit");
-        LOGGER.info("select 0-3:");
+        LOGGER.info(lang.getChangeText().get("menu"));
+        LOGGER.info(lang.getChangeText().get("which"));
+        LOGGER.info(lang.getChangeText().get("normals"));
+        LOGGER.info(lang.getChangeText().get("fasts"));
+        LOGGER.info(lang.getChangeText().get("luxuriouss"));
+        LOGGER.info(lang.getChangeText().get("exit"));
+        LOGGER.info(lang.getChangeText().get("select"));
         int newTime;
         float newPrice;
         switch (sc.nextInt()) {
@@ -90,20 +92,20 @@ public class Change implements IChange{
 
             case 1:
                 //Normal Service
-                NormalService.checkValues();
-                LOGGER.info("Type the new price modifier?");
+                NormalService.checkValues(lang);
+                LOGGER.info(lang.getChangeText().get("newprice"));
                 newPrice = sc.nextInt();
-                LOGGER.info("Type the new time modifier?");
+                LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextInt();
                 NormalService.changePrice(newPrice);
                 NormalService.changeTime(newTime);
                 break;
             case 2:
                 //Fast Service
-                FastService.checkValues();
-                LOGGER.info("Type the new price modifier?");
+                FastService.checkValues(lang);
+                LOGGER.info(lang.getChangeText().get("newprice"));
                 newPrice = sc.nextInt();
-                LOGGER.info("Type the new time modifier?");
+                LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextInt();
                 FastService.changePrice(newPrice);
                 FastService.changeTime(newTime);
@@ -112,10 +114,10 @@ public class Change implements IChange{
             case 3:
                 
                 //Luxurious Service
-                LuxuriousService.checkValues();
-                LOGGER.info("Type the new price modifier?");
+                LuxuriousService.checkValues(lang);
+                LOGGER.info(lang.getChangeText().get("newprice"));
                 newPrice = sc.nextInt();
-                LOGGER.info("Type the new time modifier?");
+                LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextInt();
                 LuxuriousService.changePrice(newPrice);
                 LuxuriousService.changeTime(newTime);
@@ -129,14 +131,16 @@ public class Change implements IChange{
     }
 
     @Override
-    public void changeWeather() throws NotValidOptionException, NegativeNumberException {
-        LOGGER.info("Menu:");
-        LOGGER.info("Which values do you want to change?");
-        LOGGER.info("1. Normal Season");
-        LOGGER.info("2. Rain Season");
-        LOGGER.info("3. Dry Season");
-        LOGGER.info("0. Exit");
-        LOGGER.info("select 0-3:");
+    public void changeWeather(ILanguage lang) throws NotValidOptionException, NegativeNumberException {
+
+        LOGGER.info(lang.getChangeText().get("menu"));
+        LOGGER.info(lang.getChangeText().get("which"));
+        LOGGER.info(lang.getChangeText().get("normalw"));
+        LOGGER.info(lang.getChangeText().get("rainyw"));
+        LOGGER.info(lang.getChangeText().get("dryw"));
+        LOGGER.info(lang.getChangeText().get("exit"));
+        LOGGER.info(lang.getChangeText().get("select"));
+       
         int newTime;
         float newPrice;
         switch (sc.nextInt()) {
@@ -147,21 +151,21 @@ public class Change implements IChange{
 
             case 1:
                 //Normal Season
-                NormalSeason.checkValues();
-                LOGGER.info("Type the new price modifier?");
+                NormalSeason.checkValues(lang);
+                LOGGER.info(lang.getChangeText().get("newprice"));
                 newPrice = sc.nextInt();
                 if (newPrice <= 0) throw new NegativeNumberException();
-                LOGGER.info("Type the new time modifier?");
+                LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextInt();
                 NormalSeason.changePrice(newPrice);
                 NormalSeason.changeTime(newTime);
                 break;
             case 2:
                 //Rain Season
-                RainSeason.checkValues();
-                LOGGER.info("Type the new price modifier?");
+                RainSeason.checkValues(lang);
+                LOGGER.info(lang.getChangeText().get("newprice"));
                 newPrice = sc.nextInt();
-                LOGGER.info("Type the new time modifier?");
+                LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextInt();
                 RainSeason.changePrice(newPrice);
                 RainSeason.changeTime(newTime);
@@ -169,10 +173,10 @@ public class Change implements IChange{
                 break;
             case 3:
                 //Dry Season
-                DrySeason.checkValues();
-                LOGGER.info("Type the new price modifier?");
+                DrySeason.checkValues(lang);
+                LOGGER.info(lang.getChangeText().get("newprice"));
                 newPrice = sc.nextInt();
-                LOGGER.info("Type the new time modifier?");
+                LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextInt();
                 DrySeason.changePrice(newPrice);
                 DrySeason.changeTime(newTime);
@@ -185,11 +189,11 @@ public class Change implements IChange{
     }
 
     @Override
-    public Country changeCountry() throws CountryNameException, NotValidPercentageException {
-        LOGGER.info("What country?");
+    public Country changeCountry(ILanguage lang) throws CountryNameException, NotValidPercentageException {
+        LOGGER.info(lang.getChangeText().get("whatcountry"));
         String countryName = sc.next();
         if (hasNumbers(countryName)) throw new CountryNameException();
-        LOGGER.info("Enter tax Rate (in percentage)");
+        LOGGER.info(lang.getChangeText().get("newtax"));
         float countryRate = (sc.nextFloat() / 100) + 1;
         if (countryRate < 0 || countryRate > 1) throw new NotValidPercentageException();
         

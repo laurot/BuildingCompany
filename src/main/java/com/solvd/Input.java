@@ -7,20 +7,21 @@ import com.solvd.exceptions.NegativeNumberException;
 import com.solvd.exceptions.NotValidOptionException;
 import com.solvd.exceptions.TooManyFloorsException;
 import com.solvd.interfaces.IIn;
+import com.solvd.language.ILanguage;
 
 public class Input implements IIn <Float>{
     static Scanner sc = new Scanner(System.in);
     private static final Logger LOGGER = LogManager.getLogger();
     
     @Override
-    public int askBuildingType() throws NotValidOptionException {
+    public int askBuildingType(ILanguage lang) throws NotValidOptionException {
         int select;
 
-        LOGGER.info("What kind of building?");
-        LOGGER.info("1. Comercial");
-        LOGGER.info("2. Residential");
-        LOGGER.info("3. Industrial");
-        LOGGER.info("select 0-3:");
+        LOGGER.info(lang.getInputText().get("buildMenu"));
+        LOGGER.info(lang.getChangeText().get("comercial"));
+        LOGGER.info(lang.getChangeText().get("residential"));
+        LOGGER.info(lang.getChangeText().get("industrial"));
+        LOGGER.info(lang.getChangeText().get("select"));
         select = sc.nextInt();
 
         if (select > 3 || select < 1) throw new NotValidOptionException();
@@ -29,14 +30,14 @@ public class Input implements IIn <Float>{
     }
 
     @Override
-    public int askServiceType() throws NotValidOptionException {
+    public int askServiceType(ILanguage lang) throws NotValidOptionException {
         int select;
 
-        LOGGER.info("What kind of service?");
-        LOGGER.info("1. Normal");
-        LOGGER.info("2. Fast");
-        LOGGER.info("3. Luxurious");
-        LOGGER.info("select 0-3:");
+        LOGGER.info(lang.getInputText().get("serviceMenu"));
+        LOGGER.info(lang.getChangeText().get("normals"));
+        LOGGER.info(lang.getChangeText().get("fasts"));
+        LOGGER.info(lang.getChangeText().get("luxuriouss"));
+        LOGGER.info(lang.getChangeText().get("select"));
         select = sc.nextInt();
 
         if (select > 3 || select < 1) throw new NotValidOptionException();
@@ -45,14 +46,14 @@ public class Input implements IIn <Float>{
     }
 
     @Override
-    public int askWeather() throws NotValidOptionException {
+    public int askWeather(ILanguage lang) throws NotValidOptionException {
         int select;
 
-        LOGGER.info("What kind of weather?");
-        LOGGER.info("1. Normal Season");
-        LOGGER.info("2. Rainy Season");
-        LOGGER.info("3. Dry Season");
-        LOGGER.info("select 0-3:");
+        LOGGER.info(lang.getInputText().get("weatherMenu"));
+        LOGGER.info(lang.getChangeText().get("normalw"));
+        LOGGER.info(lang.getChangeText().get("rainyw"));
+        LOGGER.info(lang.getChangeText().get("dryw"));
+        LOGGER.info(lang.getChangeText().get("select"));
         select = sc.nextInt();
 
 
@@ -63,20 +64,20 @@ public class Input implements IIn <Float>{
     }
 
     @Override
-    public Float askSqMetres() throws NegativeNumberException {
+    public Float askSqMetres(ILanguage lang) throws NegativeNumberException {
 
         Float sqMetres;
-        LOGGER.info("How many square metres?");
+        LOGGER.info(lang.getInputText().get("sqMetres"));
         sqMetres = sc.nextFloat();
         if (sqMetres < 1) throw new NegativeNumberException();
         return sqMetres;
     }
 
     @Override
-    public int askFloors() throws NegativeNumberException, TooManyFloorsException {
+    public int askFloors(ILanguage lang) throws NegativeNumberException, TooManyFloorsException {
 
         int floors;
-        LOGGER.info("How many floors?");
+        LOGGER.info(lang.getInputText().get("floors"));
         floors = sc.nextInt();
         if (floors < 1) throw new NegativeNumberException();
         if (floors > 26) throw new TooManyFloorsException();

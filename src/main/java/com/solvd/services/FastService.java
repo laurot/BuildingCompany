@@ -1,6 +1,7 @@
 package com.solvd.services;
 
 import org.apache.logging.log4j.*;
+import com.solvd.language.ILanguage;
 
 public class FastService extends Service {
 
@@ -13,24 +14,22 @@ public class FastService extends Service {
     }
     
 
-    public static void checkValues() {
+    public static void checkValues(ILanguage lang) {
 
-        LOGGER.info("The price modifier is set to:" + priceMod);
-        LOGGER.info("The time modifier is set to:" + timeMod);
+        LOGGER.info(lang.getCalculateAndText().get("priceSetted") + priceMod);
+        LOGGER.info(lang.getCalculateAndText().get("timeSetted") + timeMod);
     }
     
 
     public static void changePrice(float priceMod) {
 
         FastService.priceMod = priceMod;
-        checkValues();
         
     }
 
     public static void changeTime(float timeMod) {
 
         FastService.timeMod = timeMod;
-        checkValues();
         
     }
 }

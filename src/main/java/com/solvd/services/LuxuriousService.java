@@ -1,6 +1,7 @@
 package com.solvd.services;
 
 import org.apache.logging.log4j.*;
+import com.solvd.language.ILanguage;
 
 public class LuxuriousService extends Service{
 
@@ -13,17 +14,16 @@ public class LuxuriousService extends Service{
     }
     
 
-    public static void checkValues() {
+    public static void checkValues(ILanguage lang) {
 
-        LOGGER.info("The price modifier is set to:" + priceMod);
-        LOGGER.info("The time modifier is set to:" + timeMod);
+        LOGGER.info(lang.getCalculateAndText().get("priceSetted") + priceMod);
+        LOGGER.info(lang.getCalculateAndText().get("timeSetted") + timeMod);
     }
 
 
     public static void changePrice(float priceMod) {
 
         LuxuriousService.priceMod = priceMod;
-        checkValues();
         
     }
 
@@ -31,7 +31,6 @@ public class LuxuriousService extends Service{
     public static void changeTime(float timeMod) {
 
         LuxuriousService.timeMod = timeMod;
-        checkValues();
         
     }
 }

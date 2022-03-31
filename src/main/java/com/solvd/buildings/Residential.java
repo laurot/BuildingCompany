@@ -1,6 +1,7 @@
 package com.solvd.buildings;
 
 import org.apache.logging.log4j.*;
+import com.solvd.language.ILanguage;
 
 public class Residential extends Buildings {
 
@@ -13,17 +14,16 @@ public class Residential extends Buildings {
     }
     
 
-    public static void checkValues() {
+    public static void checkValues(ILanguage lang) {
 
-        LOGGER.info("The price modifier is set to:" + priceMod);
-        LOGGER.info("The time modifier is set to:" + timeMod);
+        LOGGER.info(lang.getCalculateAndText().get("priceSetted") + priceMod);
+        LOGGER.info(lang.getCalculateAndText().get("timeSetted") + timeMod);
     }
 
 
     public static void changePrice(float priceMod) {
 
         Residential.priceMod = priceMod;
-        checkValues();
         
     }
 
@@ -31,7 +31,6 @@ public class Residential extends Buildings {
     public static void changeTime(float timeMod) {
 
         Residential.timeMod = timeMod;
-        checkValues();
         
     }
 }
