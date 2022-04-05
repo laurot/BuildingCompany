@@ -12,24 +12,22 @@ public class FastService extends Service {
     public FastService() {
         super(priceMod, timeMod);
     }
-    
 
     public static void checkValues(ILanguage lang) {
 
         LOGGER.info(lang.getCalculateAndText().get("priceSetted") + priceMod);
         LOGGER.info(lang.getCalculateAndText().get("timeSetted") + timeMod);
     }
-    
 
     public static void changePrice(float priceMod) {
 
         FastService.priceMod = priceMod;
-        
+
     }
 
     public static void changeTime(float timeMod) {
 
         FastService.timeMod = timeMod;
-        
+
     }
 }

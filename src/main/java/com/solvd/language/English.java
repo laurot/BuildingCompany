@@ -3,7 +3,6 @@ package com.solvd.language;
 import java.util.*;
 
 public class English implements ILanguage {
-    
 
     public English() {
         menuText.clear();
@@ -25,6 +24,7 @@ public class English implements ILanguage {
         calculateAndText.put("days", "days");
         calculateAndText.put("current", "Current country: ");
     }
+
     private void setChangeText() {
         changeText.put("menu", "menu:");
         changeText.put("which", "Which values do you want to change?");
@@ -44,6 +44,7 @@ public class English implements ILanguage {
         changeText.put("whatcountry", "Enter new Country name");
         changeText.put("newtax", "Enter tax Rate (in percentage)");
     }
+
     private void setCheckMenu() {
         checkMenu.add("Menu:");
         checkMenu.add("Which values?");
@@ -53,6 +54,7 @@ public class English implements ILanguage {
         checkMenu.add("0. Exit");
         checkMenu.add("select 0-3:");
     }
+
     private void setCheckValues() {
         checkValues.put("ComercialB", "Comercial buildings: ");
         checkValues.put("ResidentialB", "Residential buildings: ");
@@ -64,6 +66,7 @@ public class English implements ILanguage {
         checkValues.put("RainyW", "Rain Season: ");
         checkValues.put("DryW", "Dry Season: ");
     }
+
     private void setExceptions() {
         exceptions.put("CountryName", "Countries must not have numbers in the name");
         exceptions.put("Percentage", "That's not a valid percentage (0 - 100)");
@@ -71,6 +74,7 @@ public class English implements ILanguage {
         exceptions.put("Negative", "Negative numbers are not accepted in that field");
         exceptions.put("Floors", "This company can only build up to 26 floors");
     }
+
     private void setInputText() {
         inputText.put("buildMenu", "What kind of building?");
         inputText.put("serviceMenu", "What kind of service?");
@@ -78,6 +82,7 @@ public class English implements ILanguage {
         inputText.put("sqMetres", "How many square metres?");
         inputText.put("floors", "How many floors?");
     }
+
     private void setMenuText() {
         menuText.add("menu");
         menuText.add("1. Calculate costs");
@@ -93,26 +98,32 @@ public class English implements ILanguage {
     public Map<String, String> getCalculateAndText() {
         return calculateAndText;
     }
+
     @Override
     public Map<String, String> getChangeText() {
         return changeText;
     }
+
     @Override
     public List<String> getCheckMenu() {
         return checkMenu;
     }
+
     @Override
     public Hashtable<String, String> getCheckValues() {
         return checkValues;
     }
+
     @Override
     public Map<String, String> getExceptions() {
         return exceptions;
     }
+
     @Override
     public LinkedHashMap<String, String> getInputText() {
         return inputText;
     }
+
     @Override
     public List<String> getMenuText() {
         return menuText;

@@ -12,7 +12,6 @@ public class Residential extends Buildings {
     public Residential(int floors, float sqMeters) {
         super(priceMod, timeMod, floors, sqMeters);
     }
-    
 
     public static void checkValues(ILanguage lang) {
 
@@ -20,17 +19,15 @@ public class Residential extends Buildings {
         LOGGER.info(lang.getCalculateAndText().get("timeSetted") + timeMod);
     }
 
-
     public static void changePrice(float priceMod) {
 
         Residential.priceMod = priceMod;
-        
-    }
 
+    }
 
     public static void changeTime(float timeMod) {
 
         Residential.timeMod = timeMod;
-        
+
     }
 }

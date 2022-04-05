@@ -9,7 +9,7 @@ import com.solvd.services.*;
 import com.solvd.weather.*;
 import org.apache.logging.log4j.*;
 
-public class Calculate implements ICalculate{
+public class Calculate implements ICalculate<ILanguage>{
 
     private static final Logger LOGGER = LogManager.getLogger();
 

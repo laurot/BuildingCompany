@@ -7,7 +7,7 @@ import com.solvd.exceptions.NotValidOptionException;
 import com.solvd.exceptions.NotValidPercentageException;
 import com.solvd.language.ILanguage;
 
-public interface IChange {
+public interface IChange{
     
     //To change the default values of each class
     void changeBuildings(ILanguage lang) throws NotValidOptionException;

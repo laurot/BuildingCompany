@@ -1,4 +1,5 @@
 package com.solvd.interfaces;
+
 public interface ICalc <T> {
     
     //Calculates the price and time depending on the modifiers and the variable sent

@@ -9,10 +9,10 @@ import com.solvd.exceptions.TooManyFloorsException;
 import com.solvd.interfaces.IIn;
 import com.solvd.language.ILanguage;
 
-public class Input implements IIn <Float>{
-    static Scanner sc = new Scanner(System.in);
+public class Input implements IIn<Float> {
+    private static Scanner sc = new Scanner(System.in);
     private static final Logger LOGGER = LogManager.getLogger();
-    
+
     @Override
     public int askBuildingType(ILanguage lang) throws NotValidOptionException {
         int select;
@@ -24,8 +24,9 @@ public class Input implements IIn <Float>{
         LOGGER.info(lang.getChangeText().get("select"));
         select = sc.nextInt();
 
-        if (select > 3 || select < 1) throw new NotValidOptionException();
-        
+        if (select > 3 || select < 1)
+            throw new NotValidOptionException();
+
         return select;
     }
 
@@ -40,7 +41,8 @@ public class Input implements IIn <Float>{
         LOGGER.info(lang.getChangeText().get("select"));
         select = sc.nextInt();
 
-        if (select > 3 || select < 1) throw new NotValidOptionException();
+        if (select > 3 || select < 1)
+            throw new NotValidOptionException();
 
         return select;
     }
@@ -56,9 +58,8 @@ public class Input implements IIn <Float>{
         LOGGER.info(lang.getChangeText().get("select"));
         select = sc.nextInt();
 
-
-        if (select > 3 || select < 1) throw new NotValidOptionException();
-
+        if (select > 3 || select < 1)
+            throw new NotValidOptionException();
 
         return select;
     }
@@ -69,7 +70,8 @@ public class Input implements IIn <Float>{
         Float sqMetres;
         LOGGER.info(lang.getInputText().get("sqMetres"));
         sqMetres = sc.nextFloat();
-        if (sqMetres < 1) throw new NegativeNumberException();
+        if (sqMetres < 1)
+            throw new NegativeNumberException();
         return sqMetres;
     }
 
@@ -79,8 +81,10 @@ public class Input implements IIn <Float>{
         int floors;
         LOGGER.info(lang.getInputText().get("floors"));
         floors = sc.nextInt();
-        if (floors < 1) throw new NegativeNumberException();
-        if (floors > 26) throw new TooManyFloorsException();
+        if (floors < 1)
+            throw new NegativeNumberException();
+        if (floors > 26)
+            throw new TooManyFloorsException();
         return floors;
     }
 }

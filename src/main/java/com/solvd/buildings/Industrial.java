@@ -12,7 +12,6 @@ public class Industrial extends Buildings {
     public Industrial(int floors, float sqMeters) {
         super(priceMod, timeMod, floors, sqMeters);
     }
-    
 
     public static void checkValues(ILanguage lang) {
 
@@ -23,12 +22,12 @@ public class Industrial extends Buildings {
     public static void changePrice(float priceMod) {
 
         Industrial.priceMod = priceMod;
-        
+
     }
 
     public static void changeTime(float timeMod) {
 
         Industrial.timeMod = timeMod;
-        
+
     }
 }

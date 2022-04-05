@@ -3,7 +3,7 @@ package com.solvd.services;
 import org.apache.logging.log4j.*;
 import com.solvd.language.ILanguage;
 
-public class NormalService extends Service{
+public class NormalService extends Service {
 
     private static final Logger LOGGER = LogManager.getLogger();
     private static float priceMod = 1;
@@ -12,7 +12,6 @@ public class NormalService extends Service{
     public NormalService() {
         super(priceMod, timeMod);
     }
-    
 
     public static void checkValues(ILanguage lang) {
 
@@ -20,17 +19,15 @@ public class NormalService extends Service{
         LOGGER.info(lang.getCalculateAndText().get("timeSetted") + timeMod);
     }
 
-
     public static void changePrice(float priceMod) {
 
         NormalService.priceMod = priceMod;
-        
-    }
 
+    }
 
     public static void changeTime(float timeMod) {
 
         NormalService.timeMod = timeMod;
-        
+
     }
 }

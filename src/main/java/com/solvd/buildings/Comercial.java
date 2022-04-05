@@ -3,7 +3,7 @@ package com.solvd.buildings;
 import org.apache.logging.log4j.*;
 import com.solvd.language.ILanguage;
 
-public class Comercial extends Buildings  {
+public class Comercial extends Buildings {
 
     private static final Logger LOGGER = LogManager.getLogger();
     private static float priceMod = 400;
@@ -11,9 +11,8 @@ public class Comercial extends Buildings  {
 
     public Comercial(int floors, float sqMeters) {
         super(priceMod, timeMod, floors, sqMeters);
-        
-    }
 
+    }
 
     public static void checkValues(ILanguage lang) {
 
@@ -24,15 +23,13 @@ public class Comercial extends Buildings  {
     public static void changePrice(float priceMod) {
 
         Comercial.priceMod = priceMod;
-        
+
     }
 
     public static void changeTime(float timeMod) {
 
         Comercial.timeMod = timeMod;
-        
+
     }
-
-
 
 }
