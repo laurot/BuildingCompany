@@ -32,9 +32,8 @@ public class App
                 }                
                 result = result + list.get(i) + " - " + amount +"\n";
             }
-            File output = new File("output.txt");
+            File output = new File("src/main/resources/output.txt");
             FileUtils.writeStringToFile(output, result, StandardCharsets.UTF_8);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
