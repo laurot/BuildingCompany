@@ -1,13 +1,14 @@
 package com.solvd.services;
 
 import org.apache.logging.log4j.*;
+import com.solvd.enums.Values;
 import com.solvd.language.ILanguage;
 
 public class LuxuriousService extends Service {
 
     private static final Logger LOGGER = LogManager.getLogger();
-    private static float priceMod = 3;
-    private static float timeMod = 2;
+    private static float priceMod = (float) Values.LUXURIOUS.getDefVal().getPriceMod();
+    private static float timeMod = (float) Values.LUXURIOUS.getDefVal().getTimeMod();
 
     public LuxuriousService() {
         super(priceMod, timeMod);

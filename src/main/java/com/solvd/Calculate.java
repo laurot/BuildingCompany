@@ -1,7 +1,6 @@
 package com.solvd;
 
 import com.solvd.buildings.*;
-import com.solvd.exceptions.*;
 import com.solvd.interfaces.ICalculate;
 import com.solvd.interfaces.ITax;
 import com.solvd.language.ILanguage;
@@ -13,7 +12,7 @@ public class Calculate implements ICalculate<ILanguage>{
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public void calculate(ITax country, ILanguage lang) throws NotValidOptionException, NegativeNumberException, TooManyFloorsException {
+    public void calculate(ITax country, ILanguage lang) {
         
         Input input = new Input();
         Float time = (float) 0;

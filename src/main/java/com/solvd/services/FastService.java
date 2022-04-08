@@ -1,13 +1,14 @@
 package com.solvd.services;
 
 import org.apache.logging.log4j.*;
+import com.solvd.enums.*;
 import com.solvd.language.ILanguage;
 
 public class FastService extends Service {
 
     private static final Logger LOGGER = LogManager.getLogger();
-    private static float priceMod = 2;
-    private static float timeMod = (float) 0.5;
+    private static float priceMod = (float) Values.FAST.getDefVal().getPriceMod();
+    private static float timeMod = (float) Values.FAST.getDefVal().getTimeMod();
 
     public FastService() {
         super(priceMod, timeMod);

@@ -21,7 +21,7 @@ public class Spanish implements ILanguage {
         calculateAndText.put("timeSetted", "El modificador de tiempo es: ");
         calculateAndText.put("priceText", "El precio de construir es: $");
         calculateAndText.put("timeText", "El tiempo que tomara es de: ");
-        calculateAndText.put("days", "dias");
+        calculateAndText.put(" days", " dias");
         calculateAndText.put("current", "Pais actual: ");
     }
 

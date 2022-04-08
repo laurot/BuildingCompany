@@ -1,13 +1,14 @@
 package com.solvd.weather;
 
 import org.apache.logging.log4j.*;
+import com.solvd.enums.Values;
 import com.solvd.language.ILanguage;
 
 public class RainSeason extends Weather{
 
     private static final Logger LOGGER = LogManager.getLogger();
-    private static float priceMod = (float) 1.5;
-    private static float timeMod = (float) 2.5;
+    private static float priceMod = (float) Values.RAINY.getDefVal().getPriceMod();
+    private static float timeMod = (float) Values.RAINY.getDefVal().getTimeMod();
 
     public RainSeason() {
         super(priceMod, timeMod);

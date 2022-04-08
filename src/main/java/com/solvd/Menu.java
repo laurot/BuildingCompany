@@ -25,76 +25,64 @@ public class Menu {
         LOGGER.info("----------------------------------------------");
         LOGGER.info(lang.getCalculateAndText().get("current") + country.getName());
         LOGGER.info("----------------------------------------------");
-        for (int i = 0; i < lang.getMenuText().size() - 1; i++) {
-            LOGGER.info(lang.getMenuText().get(i));
+
+        for (String text : lang.getMenuText()) {
+            LOGGER.info(text);
         }
         LOGGER.info("----------------------------------------------");
-        try {
-            select = sc.nextInt();
 
-            switch (select) {
-                case 0:
-                    // Exit
-                    LOGGER.info("Exiting");
-                    break;
+        select = sc.nextInt();
 
-                case 1:
-                    // Calculate time and cost
-                    calc.calculate(country, lang);
-                    break;
+        switch (select) {
+            case 0:
+                // Exit
+                LOGGER.info("Exiting");
+                break;
 
-                case 2:
-                    // Decide which values to check
-                    checkValues();
+            case 1:
+                // Calculate time and cost
+                calc.calculate(country, lang);
+                break;
 
-                    break;
-                case 3:
-                    // Change modifiers
-                    changeMods();
-                    break;
-                case 4:
-                    // Change Country
-                    country = change.changeCountry(lang);
+            case 2:
+                // Decide which values to check
+                checkValues();
 
-                    break;
-                case 5:
-                    // Change language
-                    if (l == 0) {
-                        lang = new Spanish();
-                        l = 1;
-                    } else {
-                        lang = new English();
-                        l = 0;
-                    }
-                    break;
+                break;
+            case 3:
+                // Change modifiers
+                changeMods();
+                break;
+            case 4:
+                // Change Country
+                country = change.changeCountry(lang);
 
-                default:
-                    // In case of invalid number, ask again
-                    throw new NotValidOptionException();
-            }
+                break;
+            case 5:
+                // Change language
+                if (l == 0) {
+                    lang = new Spanish();
+                    l = 1;
+                } else {
+                    lang = new English();
+                    l = 0;
+                }
+                break;
 
-            return select;
-        } catch (CountryNameException e) {
-            LOGGER.warn(lang.getExceptions().get("CountryName"));
-        } catch (NotValidPercentageException a) {
-            LOGGER.warn(lang.getExceptions().get("Percentage"));
-        } catch (NotValidOptionException o) {
-            LOGGER.warn(lang.getExceptions().get("Option"));
-        } catch (NegativeNumberException n) {
-            LOGGER.warn(lang.getExceptions().get("Negative"));
-        } catch (TooManyFloorsException t) {
-            LOGGER.warn(lang.getExceptions().get("Floors"));
+            default:
+                // In case of invalid number, ask again
+                throw new NotValidOptionException();
         }
 
-        return 1;
+        return select;
     }
 
     private void checkValues() throws NotValidOptionException {
 
         int select;
 
-        for (int i = 0; i < lang.getCheckMenu().size() - 1; i++) {
-            LOGGER.info(lang.getCheckMenu().get(i));
+        for (String text : lang.getCheckMenu()) {
+            LOGGER.info(text);
         }
         select = sc.nextInt();
 
@@ -145,8 +133,8 @@ public class Menu {
     private void changeMods() throws NotValidOptionException, NegativeNumberException {
         int select;
 
-        for (int i = 0; i < lang.getCheckMenu().size() - 1; i++) {
-            LOGGER.info(lang.getCheckMenu().get(i));
+        for (String text : lang.getCheckMenu()) {
+            LOGGER.info(text);
         }
         select = sc.nextInt();
 

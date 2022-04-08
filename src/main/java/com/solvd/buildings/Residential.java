@@ -1,13 +1,14 @@
 package com.solvd.buildings;
 
 import org.apache.logging.log4j.*;
+import com.solvd.enums.*;
 import com.solvd.language.ILanguage;
 
 public class Residential extends Buildings {
 
     private static final Logger LOGGER = LogManager.getLogger();
-    private static float priceMod = 500;
-    private static float timeMod = 12;
+    private static float priceMod = (float) Values.RESIDENTIAL.getDefVal().getPriceMod();
+    private static float timeMod = (float) Values.RESIDENTIAL.getDefVal().getTimeMod();
 
     public Residential(int floors, float sqMeters) {
         super(priceMod, timeMod, floors, sqMeters);

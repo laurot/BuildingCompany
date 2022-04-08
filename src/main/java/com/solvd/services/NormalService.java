@@ -1,13 +1,14 @@
 package com.solvd.services;
 
 import org.apache.logging.log4j.*;
+import com.solvd.enums.Values;
 import com.solvd.language.ILanguage;
 
 public class NormalService extends Service {
 
     private static final Logger LOGGER = LogManager.getLogger();
-    private static float priceMod = 1;
-    private static float timeMod = 1;
+    private static float priceMod = (float) Values.NORMALS.getDefVal().getPriceMod();
+    private static float timeMod = (float) Values.NORMALS.getDefVal().getTimeMod();
 
     public NormalService() {
         super(priceMod, timeMod);

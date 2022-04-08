@@ -18,7 +18,7 @@ public class Change implements IChange {
     private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
-    public void changeBuildings(ILanguage lang) throws NotValidOptionException {
+    public void changeBuildings(ILanguage lang) {
 
         LOGGER.info(lang.getChangeText().get("menu"));
         LOGGER.info(lang.getChangeText().get("which"));
@@ -191,18 +191,26 @@ public class Change implements IChange {
     }
 
     @Override
-    public Country changeCountry(ILanguage lang) throws CountryNameException, NotValidPercentageException {
+    public Country changeCountry(ILanguage lang){
+        try{
         LOGGER.info(lang.getChangeText().get("whatcountry"));
         String countryName = sc.next();
         if (hasNumbers(countryName))
             throw new CountryNameException();
         LOGGER.info(lang.getChangeText().get("newtax"));
         float countryRate = (sc.nextFloat() / 100) + 1;
-        if (countryRate < 0 || countryRate > 1)
+        if (countryRate < 1 || countryRate > 2)
             throw new NotValidPercentageException();
-
         Country country = new Country(countryName, countryRate);
         return country;
+        }catch(CountryNameException cne){
+            LOGGER.warn("Not a valide name");
+            return changeCountry(lang);
+        }catch(NotValidPercentageException nvpe){
+            LOGGER.warn("Not a valid percentage");
+            return changeCountry(lang);
+        }
+
     }
 
     private boolean hasNumbers(String string) {
