@@ -7,11 +7,15 @@ import com.solvd.exceptions.NegativeNumberException;
 import com.solvd.exceptions.NotValidOptionException;
 import com.solvd.exceptions.TooManyFloorsException;
 import com.solvd.interfaces.IIn;
+import com.solvd.interfaces.IPrintInvalidOption;
+import com.solvd.interfaces.IPrintOne;
 import com.solvd.language.ILanguage;
 
-public class Input implements IIn<Float> {
+public class Input implements IIn<Double> {
     private static Scanner sc = new Scanner(System.in);
     private static final Logger LOGGER = LogManager.getLogger();
+    IPrintInvalidOption printer = () -> LOGGER.info("Invalid option");
+    IPrintOne printOne = () -> LOGGER.info("Value has to be at least 1");
 
     @Override
     public int askBuildingType(ILanguage lang) {
@@ -28,7 +32,7 @@ public class Input implements IIn<Float> {
             if (select > 3 || select < 1)
             throw new NotValidOptionException();
         }catch(NotValidOptionException a){
-            LOGGER.info("Invalid option");
+            printer.print();
             askBuildingType(lang);
         }
         return select;
@@ -49,7 +53,7 @@ public class Input implements IIn<Float> {
             if (select > 3 || select < 1)
             throw new NotValidOptionException();
         }catch(NotValidOptionException a){
-            LOGGER.info("Invalid option");
+            printer.print();
             select = askServiceType(lang);
         }
         return select;
@@ -70,7 +74,7 @@ public class Input implements IIn<Float> {
             if (select > 3 || select < 1)
             throw new NotValidOptionException();
         }catch(NotValidOptionException a){
-            LOGGER.info("Invalid option");
+            printer.print();
             select = askWeather(lang);
         }
 
@@ -78,17 +82,17 @@ public class Input implements IIn<Float> {
     }
 
     @Override
-    public Float askSqMetres(ILanguage lang) {
+    public Double askSqMetres(ILanguage lang) {
 
-        Float sqMetres;
+        Double sqMetres;
         LOGGER.info(lang.getInputText().get("sqMetres"));
-        sqMetres = sc.nextFloat();
+        sqMetres = sc.nextDouble();
         try{
         if (sqMetres < 1)
             throw new NegativeNumberException();
             
         }catch(NegativeNumberException nne){
-            LOGGER.info("Value has to be at least 1");
+            printOne.print();
             sqMetres = askSqMetres(lang);
         }
         return sqMetres;
@@ -106,7 +110,7 @@ public class Input implements IIn<Float> {
         if (floors > 26)
             throw new TooManyFloorsException();
         }catch(NegativeNumberException nne){
-            LOGGER.info("Value has to be at least 1");
+            printOne.print();
             floors = askFloors(lang);
         }catch(TooManyFloorsException tmfe){
             LOGGER.info("This company can only do 26 floors");

@@ -1,26 +1,48 @@
 package com.solvd.services;
 
 import com.solvd.interfaces.ICalc;
+import com.solvd.language.ILanguage;
+import org.apache.logging.log4j.*;
 
-public abstract class Service implements ICalc<Float> {
+public abstract class Service implements ICalc<Double> {
 
-    private float priceMod;
-    private float timeMod;
+    private Double priceMod;
+    private Double timeMod;
+    private static final Logger LOGGER = LogManager.getLogger();
 
-    public Service(float servPriceMod, float servTimeMod) {
+    public Service(Double servPriceMod, Double servTimeMod) {
         this.priceMod = servPriceMod;
         this.timeMod = servTimeMod;
     }
 
     @Override
-    public Float calcTime(Float time) {
+    public Double calcTime(Double time) {
         time = time * timeMod;
         return time;
     }
 
     @Override
-    public Float calcPrice(Float price) {
+    public Double calcPrice(Double price) {
         price = price * priceMod;
         return price;
+    }
+
+    
+    public void checkValues(ILanguage lang) {
+
+        LOGGER.info(lang.getCalculateAndText().get("priceSetted") + priceMod);
+        LOGGER.info(lang.getCalculateAndText().get("timeSetted") + timeMod);
+    }
+
+    public void changePrice(Double priceMod) {
+
+        this.priceMod = priceMod;
+
+    }
+
+    public void changeTime(Double timeMod) {
+
+        this.timeMod = timeMod;
+
     }
 }

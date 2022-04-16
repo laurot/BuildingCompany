@@ -1,32 +1,48 @@
 package com.solvd.buildings;
 
-import com.solvd.interfaces.*;
+import com.solvd.language.ILanguage;
+import org.apache.logging.log4j.*;
 
-public abstract class Buildings implements ICalc<Float> {
+public abstract class Buildings {
 
-    private float priceMod;
-    private float timeMult;
-    private float sqMeters;
-    private int floors;
+    private Double priceMod;
+    private Double timeMod;
+    private static final Logger LOGGER = LogManager.getLogger();
 
-    public Buildings(float priceMod, float timeMult, int floors, float sqMeters) {
+    public Buildings(Double priceMod, Double timeMult) {
         this.priceMod = priceMod;
-        this.timeMult = timeMult;
-        this.floors = floors;
-        this.sqMeters = sqMeters;
+        this.timeMod = timeMult;
+
     }
 
-    @Override
-    public Float calcPrice(Float price) {
-
-        float totalP = (priceMod * sqMeters * floors);
+    public Double calcPrice(double sqMeters, int floors) {
+        Double totalP = (priceMod * sqMeters * floors);
         return totalP;
     }
 
-    @Override
-    public Float calcTime(Float time) {
-        float totalT = (timeMult * floors * sqMeters);
+    public Double calcTime(double sqMeters, int floors) {
+        Double totalT = (timeMod * floors * sqMeters);
         return totalT;
     }
 
+    public void changePrice(Double priceMod) {
+        this.priceMod = priceMod;
+    }
+
+    public void changeTime(Double timeMod) {
+        this.timeMod = timeMod;
+    }
+
+    public void checkValues(ILanguage lang) {
+        LOGGER.info(lang.getCalculateAndText().get("priceSetted") + priceMod);
+        LOGGER.info(lang.getCalculateAndText().get("timeSetted") + timeMod);
+    }
+
+    public Double getPriceMod() {
+        return priceMod;
+    }
+
+    public Double getTimeMod() {
+        return timeMod;
+    }
 }

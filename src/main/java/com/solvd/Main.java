@@ -2,7 +2,7 @@ package com.solvd;
 
 public class Main {
     public static void main(String[] args) {
-        App.Text();
+        //App.fileReadToFile();
         Menu menu1 = new Menu();
         int value;
         do {

@@ -3,7 +3,6 @@ package com.solvd;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -12,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
     and does nothing for the actual Project*/
 public class App 
 {
-    public static void Text()
+    public static void fileReadToFile()
     {
         try {
             File file = new File("src/main/resources/article");

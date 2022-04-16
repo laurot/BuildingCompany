@@ -4,10 +4,10 @@ import com.solvd.interfaces.ITax;
 
 public class Country implements ITax {
 
-    private float taxRate;
+    private Double taxRate;
     private String name;
 
-    public Country(String name, float taxRate) {
+    public Country(String name, Double taxRate) {
         this.name = name;
         this.taxRate = taxRate;
     }
@@ -17,8 +17,8 @@ public class Country implements ITax {
     }
 
     @Override
-    public float tax(float price) {
-        float total = taxRate * price;
+    public Double tax(Double price) {
+        Double total = taxRate * price;
         return total;
     }
 

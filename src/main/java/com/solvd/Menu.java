@@ -15,21 +15,43 @@ public class Menu {
     private static Scanner sc = new Scanner(System.in);
     static IChange change = new Change();
     ILanguage lang = new English();
-    Country country = new Country("Argentina", (float) 1.21);
+    Country country = new Country("Argentina", (Double) 1.21);
     ICalculate<ILanguage> calc = new Calculate();
     int l = 0;
+    IPutBar bar = () -> LOGGER.info("----------------------------------------------");
+
+    private Buildings com;
+    private Buildings ind;
+    private Buildings res;
+    private Service fas;
+    private Service lux;
+    private Service nse;
+    private Weather dry;
+    private Weather wet;
+    private Weather nwe;
+
+    public Menu(){
+        com = new Comercial();
+        ind = new Industrial();
+        res = new Residential();
+        fas = new FastService();
+        lux = new LuxuriousService();
+        nse = new NormalService();
+        dry = new DrySeason();
+        wet = new RainSeason();
+        nwe = new NormalSeason();
+    }
 
     public int mainMenu() {
-
+        
         int select;
-        LOGGER.info("----------------------------------------------");
+        bar.printBar();
         LOGGER.info(lang.getCalculateAndText().get("current") + country.getName());
-        LOGGER.info("----------------------------------------------");
+        bar.printBar();
 
-        for (String text : lang.getMenuText()) {
-            LOGGER.info(text);
-        }
-        LOGGER.info("----------------------------------------------");
+        lang.getMenuText().stream().forEach(text -> LOGGER.info(text));
+
+        bar.printBar();
 
         select = sc.nextInt();
 
@@ -41,7 +63,7 @@ public class Menu {
 
             case 1:
                 // Calculate time and cost
-                calc.calculate(country, lang);
+                calcu();
                 break;
 
             case 2:
@@ -77,13 +99,12 @@ public class Menu {
         return select;
     }
 
-    private void checkValues() throws NotValidOptionException {
+    private void checkValues(){
 
         int select;
 
-        for (String text : lang.getCheckMenu()) {
-            LOGGER.info(text);
-        }
+        lang.getCheckMenu().stream().forEach(text -> LOGGER.info(text));
+
         select = sc.nextInt();
 
         switch (select) {
@@ -93,36 +114,36 @@ public class Menu {
 
             case 1:
                 // Buildings
-                LOGGER.info("----------------------------------------------");
+                bar.printBar();
                 LOGGER.info(lang.getCheckValues().get("ComercialB"));
-                Comercial.checkValues(lang);
+                com.checkValues(lang);
                 LOGGER.info(lang.getCheckValues().get("IndustrialB"));
-                Industrial.checkValues(lang);
+                ind.checkValues(lang);
                 LOGGER.info(lang.getCheckValues().get("ResidentialB"));
-                Residential.checkValues(lang);
-                LOGGER.info("----------------------------------------------");
+                res.checkValues(lang);
+                bar.printBar();
                 break;
             case 2:
                 // Services
-                LOGGER.info("----------------------------------------------");
+                bar.printBar();
                 LOGGER.info(lang.getCheckValues().get("NormalSe"));
-                NormalService.checkValues(lang);
+                nse.checkValues(lang);
                 LOGGER.info(lang.getCheckValues().get("FastSe"));
-                FastService.checkValues(lang);
+                fas.checkValues(lang);
                 LOGGER.info(lang.getCheckValues().get("LuxuriousSe"));
-                LuxuriousService.checkValues(lang);
-                LOGGER.info("----------------------------------------------");
+                lux.checkValues(lang);
+                bar.printBar();
                 break;
             case 3:
                 // Weather
-                LOGGER.info("----------------------------------------------");
+                bar.printBar();
                 LOGGER.info(lang.getCheckValues().get("NormalW"));
-                NormalSeason.checkValues(lang);
+                nwe.checkValues(lang);
                 LOGGER.info(lang.getCheckValues().get("DryW"));
-                DrySeason.checkValues(lang);
+                dry.checkValues(lang);
                 LOGGER.info(lang.getCheckValues().get("RainyW"));
-                RainSeason.checkValues(lang);
-                LOGGER.info("----------------------------------------------");
+                wet.checkValues(lang);
+                bar.printBar();
                 break;
             default:
                 // In case of invalid number, ask again
@@ -133,9 +154,8 @@ public class Menu {
     private void changeMods() throws NotValidOptionException, NegativeNumberException {
         int select;
 
-        for (String text : lang.getCheckMenu()) {
-            LOGGER.info(text);
-        }
+        lang.getCheckMenu().stream().forEach(text -> LOGGER.info(text));
+
         select = sc.nextInt();
 
         switch (select) {
@@ -144,19 +164,69 @@ public class Menu {
                 break;
             case 1:
                 // Buildings
-                change.changeBuildings(lang);
+                change.changeBuildings(lang, com, res, ind);
                 break;
             case 2:
                 // Services
-                change.changeServices(lang);
+                change.changeServices(lang, nse, fas, lux);
                 break;
             case 3:
                 // Weather
-                change.changeWeather(lang);
+                change.changeWeather(lang, nwe, dry, wet);
                 break;
             default:
                 // In case of invalid number, ask again
                 throw new NotValidOptionException();
         }
+    }
+
+    private void calcu(){
+
+        Input input = new Input();
+
+        int buildType = input.askBuildingType(lang);
+        int weather = input.askWeather(lang);
+        int serviceType = input.askServiceType(lang);
+        int floors = input.askFloors(lang);
+        Double sqMeters = input.askSqMetres(lang);
+
+        Buildings calcBuild;
+        Service calcServ;
+        Weather calcWeath;
+
+        switch (buildType) {
+            case 2:
+                //Residential
+                calcBuild = res;
+            case 3:
+                //Industrial
+                calcBuild = ind;
+            default:
+                //Commercial
+                calcBuild = com;            
+        }
+        switch (weather) {
+            case 2:
+                //Dry Season
+                calcWeath = dry;
+            case 3:
+                //Rainy Season
+                calcWeath = wet;
+            default:
+                //Normal Season
+                calcWeath = nwe;
+        }
+        switch (serviceType) {
+            case 2:
+                //Fast Service
+                calcServ = fas;
+            case 3:
+                //Luxurious Service
+                calcServ = lux;
+            default:
+                //Normal Service
+                calcServ = nse;
+        }
+        calc.calculate(country, lang, floors, sqMeters, calcBuild, calcWeath, calcServ);
     }
 }
