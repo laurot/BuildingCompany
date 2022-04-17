@@ -1,5 +1,6 @@
 package com.solvd.weather;
 
+import com.solvd.interfaces.DoubleBiFunction;
 import com.solvd.interfaces.ICalc;
 import com.solvd.language.ILanguage;
 import org.apache.logging.log4j.*;
@@ -9,6 +10,7 @@ public abstract class Weather implements ICalc <Double>{
     private Double priceMod;
     private Double timeMod;
     private static final Logger LOGGER = LogManager.getLogger();
+    private DoubleBiFunction<Double> mult = (value, mod) -> value*mod;
 
     public Weather(Double weatherPriceMod, Double weatherTimeMod){
         this.priceMod = weatherPriceMod;
@@ -17,14 +19,12 @@ public abstract class Weather implements ICalc <Double>{
 
     @Override
     public Double calcTime(Double time){
-        time = time*timeMod;
-        return time;
+        return mult.apply(time, timeMod);
     }
     
     @Override
     public Double calcPrice(Double price){
-        price = price*priceMod;
-        return price;
+        return mult.apply(price, priceMod);
     }
 
     public void checkValues(ILanguage lang) {

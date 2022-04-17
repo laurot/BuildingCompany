@@ -18,7 +18,7 @@ public class Menu {
     Country country = new Country("Argentina", (Double) 1.21);
     ICalculate<ILanguage> calc = new Calculate();
     int l = 0;
-    IPutBar bar = () -> LOGGER.info("----------------------------------------------");
+
 
     private Buildings com;
     private Buildings ind;
@@ -45,13 +45,13 @@ public class Menu {
     public int mainMenu() {
         
         int select;
-        bar.printBar();
+        LOGGER.info("----------------------------------------------");
         LOGGER.info(lang.getCalculateAndText().get("current") + country.getName());
-        bar.printBar();
+        LOGGER.info("----------------------------------------------");
 
         lang.getMenuText().stream().forEach(text -> LOGGER.info(text));
 
-        bar.printBar();
+        LOGGER.info("----------------------------------------------");
 
         select = sc.nextInt();
 
@@ -114,36 +114,36 @@ public class Menu {
 
             case 1:
                 // Buildings
-                bar.printBar();
+                LOGGER.info("----------------------------------------------");
                 LOGGER.info(lang.getCheckValues().get("ComercialB"));
                 com.checkValues(lang);
                 LOGGER.info(lang.getCheckValues().get("IndustrialB"));
                 ind.checkValues(lang);
                 LOGGER.info(lang.getCheckValues().get("ResidentialB"));
                 res.checkValues(lang);
-                bar.printBar();
+                LOGGER.info("----------------------------------------------");
                 break;
             case 2:
                 // Services
-                bar.printBar();
+                LOGGER.info("----------------------------------------------");
                 LOGGER.info(lang.getCheckValues().get("NormalSe"));
                 nse.checkValues(lang);
                 LOGGER.info(lang.getCheckValues().get("FastSe"));
                 fas.checkValues(lang);
                 LOGGER.info(lang.getCheckValues().get("LuxuriousSe"));
                 lux.checkValues(lang);
-                bar.printBar();
+                LOGGER.info("----------------------------------------------");
                 break;
             case 3:
                 // Weather
-                bar.printBar();
+                LOGGER.info("----------------------------------------------");
                 LOGGER.info(lang.getCheckValues().get("NormalW"));
                 nwe.checkValues(lang);
                 LOGGER.info(lang.getCheckValues().get("DryW"));
                 dry.checkValues(lang);
                 LOGGER.info(lang.getCheckValues().get("RainyW"));
                 wet.checkValues(lang);
-                bar.printBar();
+                LOGGER.info("----------------------------------------------");
                 break;
             default:
                 // In case of invalid number, ask again

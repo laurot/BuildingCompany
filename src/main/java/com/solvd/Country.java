@@ -18,8 +18,7 @@ public class Country implements ITax {
 
     @Override
     public Double tax(Double price) {
-        Double total = taxRate * price;
-        return total;
+        return taxRate * price;
     }
 
 }

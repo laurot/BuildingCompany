@@ -1,5 +1,6 @@
 package com.solvd.buildings;
 
+import com.solvd.interfaces.ToDoubleTriFunction;
 import com.solvd.language.ILanguage;
 import org.apache.logging.log4j.*;
 
@@ -8,6 +9,10 @@ public abstract class Buildings {
     private Double priceMod;
     private Double timeMod;
     private static final Logger LOGGER = LogManager.getLogger();
+    
+    private ToDoubleTriFunction<Double,Integer,Double> mult = (mod, floors, sqMeters) ->{
+        return mod * floors * sqMeters;
+    };
 
     public Buildings(Double priceMod, Double timeMult) {
         this.priceMod = priceMod;
@@ -16,12 +21,12 @@ public abstract class Buildings {
     }
 
     public Double calcPrice(double sqMeters, int floors) {
-        Double totalP = (priceMod * sqMeters * floors);
+        Double totalP = mult.applyAsDouble(priceMod,floors,sqMeters);
         return totalP;
     }
 
     public Double calcTime(double sqMeters, int floors) {
-        Double totalT = (timeMod * floors * sqMeters);
+        Double totalT = mult.applyAsDouble(timeMod,floors,sqMeters);
         return totalT;
     }
 
