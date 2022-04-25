@@ -6,6 +6,8 @@ import com.solvd.interfaces.IChange;
 import com.solvd.language.ILanguage;
 import com.solvd.services.*;
 import com.solvd.weather.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 import org.apache.logging.log4j.*;
 
@@ -190,21 +192,31 @@ public class Change implements IChange {
     @Override
     public Country changeCountry(ILanguage lang){
         try{
-        LOGGER.info(lang.getChangeText().get("whatcountry"));
-        String countryName = sc.next();
-        if (hasNumbers(countryName))
-            throw new CountryNameException();
-        LOGGER.info(lang.getChangeText().get("newtax"));
-        Double countryRate = (sc.nextDouble() / 100) + 1;
-        if (countryRate < 1 || countryRate > 2)
-            throw new NotValidPercentageException();
-        Country country = new Country(countryName, countryRate);
-        return country;
+            LOGGER.info(lang.getChangeText().get("whatcountry"));
+            String countryName = sc.next();
+            if (hasNumbers(countryName))
+                throw new CountryNameException();
+            LOGGER.info(lang.getChangeText().get("newtax"));
+            Double countryRate = (sc.nextDouble() / 100) + 1;
+            if (countryRate < 1 || countryRate > 2)
+                throw new NotValidPercentageException();
+            //Country country = new Country(countryName, countryRate);
+            //return country;
+
+            //Reflection
+            Constructor<?>[] cons = Country.class.getDeclaredConstructors();
+            Country count = (Country) cons[0].newInstance(countryName, countryRate);
+            return count;
+            
         }catch(CountryNameException cne){
             LOGGER.warn("Not a valide name");
             return changeCountry(lang);
         }catch(NotValidPercentageException nvpe){
             LOGGER.warn("Not a valid percentage");
+            return changeCountry(lang);
+        }catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+                    | InvocationTargetException e) {
+            e.printStackTrace();
             return changeCountry(lang);
         }
 
