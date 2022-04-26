@@ -230,8 +230,8 @@ public class Change implements IChange {
                 sb.append(c);
             }
         }
-        if (sb.toString() != "")
-            return true;
+        if (!sb.toString().equals("")){
+            return true;}
         return false;
     }
 }
