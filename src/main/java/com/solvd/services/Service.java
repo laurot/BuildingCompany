@@ -8,7 +8,7 @@ public abstract class Service implements ICalc<Double> {
 
     private Double priceMod;
     private Double timeMod;
-    private static final Logger LOGGER = LogManager.getLogger();
+    protected Logger LOGGER = LogManager.getLogger();
 
     public Service(Double servPriceMod, Double servTimeMod) {
         this.priceMod = servPriceMod;
@@ -45,4 +45,6 @@ public abstract class Service implements ICalc<Double> {
         this.timeMod = timeMod;
 
     }
+
+    public abstract void print();
 }

@@ -2,6 +2,8 @@ package com.solvd.language;
 
 import java.util.*;
 
+import com.solvd.enums.OptionEs;
+
 public class Spanish implements ILanguage {
 
     public Spanish() {
@@ -48,9 +50,9 @@ public class Spanish implements ILanguage {
     private void setCheckMenu() {
         checkMenu.add("Menu:");
         checkMenu.add("Que valores?");
-        checkMenu.add("1. Edificio");
-        checkMenu.add("2. Servicio");
-        checkMenu.add("3. Modificadores de clima");
+        checkMenu.add("1. " + OptionEs.BUILDINGS);
+        checkMenu.add("2. "+ OptionEs.SERVICES);
+        checkMenu.add("3. " + OptionEs.WEATHERS);
         checkMenu.add("0. Salir");
         checkMenu.add("Seleccionar 0-3:");
     }

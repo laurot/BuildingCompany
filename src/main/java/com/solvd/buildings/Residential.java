@@ -5,8 +5,14 @@ import com.solvd.enums.*;
 public class Residential extends Buildings {
 
     public Residential() {
-        super(Values.RESIDENTIAL.getDefVal().getPriceMod(),
-              Values.RESIDENTIAL.getDefVal().getTimeMod());
+        super(DefaultValues.RESIDENTIAL.getPriceMod(),
+        DefaultValues.RESIDENTIAL.getTimeMod());
     }
 
+    @Override
+    public void print(){
+        LOGGER.info("Residential default values: \n Price modifier: " 
+        + DefaultValues.RESIDENTIAL.getPriceMod() + "\n Time modifier: "
+        + DefaultValues.RESIDENTIAL.getTimeMod());
+    }
 }

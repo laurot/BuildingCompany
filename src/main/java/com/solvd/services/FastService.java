@@ -5,8 +5,14 @@ import com.solvd.enums.*;
 public class FastService extends Service {
 
     public FastService() {
-        super(Values.FAST.getDefVal().getPriceMod(),
-              Values.FAST.getDefVal().getTimeMod());
+        super(DefaultValues.FAST.getPriceMod(),
+        DefaultValues.FAST.getTimeMod());
     }
 
+    @Override
+    public void print(){
+        LOGGER.info("Fast service default values: \n Price modifier: " 
+        + DefaultValues.FAST.getPriceMod() + "\n Time modifier: "
+        + DefaultValues.FAST.getTimeMod());
+    }
 }

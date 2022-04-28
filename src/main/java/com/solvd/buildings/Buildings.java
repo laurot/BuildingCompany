@@ -8,7 +8,7 @@ public abstract class Buildings {
 
     private Double priceMod;
     private Double timeMod;
-    private static final Logger LOGGER = LogManager.getLogger();
+    protected Logger LOGGER = LogManager.getLogger();
     
     private ToDoubleTriFunction<Double,Integer,Double> mult = (mod, floors, sqMeters) ->{
         return mod * floors * sqMeters;
@@ -50,4 +50,6 @@ public abstract class Buildings {
     public Double getTimeMod() {
         return timeMod;
     }
+
+    public abstract void print();
 }

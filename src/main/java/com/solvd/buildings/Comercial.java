@@ -5,7 +5,14 @@ import com.solvd.enums.*;
 public class Comercial extends Buildings {
 
     public Comercial() {
-        super(Values.COMMERCIAL.getDefVal().getPriceMod(), 
-              Values.COMMERCIAL.getDefVal().getTimeMod());
+        super(DefaultValues.COMMERCIAL.getPriceMod(), 
+        DefaultValues.COMMERCIAL.getTimeMod());
+    }
+
+    @Override
+    public void print(){
+        LOGGER.info("Commercial default values: \n Price modifier: " 
+        + DefaultValues.COMMERCIAL.getPriceMod() + "\n Time modifier: "
+        + DefaultValues.COMMERCIAL.getTimeMod());
     }
 }

@@ -2,7 +2,7 @@ package com.solvd.language;
 
 import java.util.*;
 
-import com.solvd.enums.Values;
+import com.solvd.enums.*;
 
 public class English implements ILanguage {
 
@@ -50,9 +50,9 @@ public class English implements ILanguage {
     private void setCheckMenu() {
         checkMenu.add("Menu:");
         checkMenu.add("Which values?");
-        checkMenu.add("1. " + Values.RESIDENTIAL.getOpt());
-        checkMenu.add("2. " + Values.FAST.getOpt());
-        checkMenu.add("3. " + Values.RAINY.getOpt());
+        checkMenu.add("1. " + Options.BUILDINGS.getName());
+        checkMenu.add("2. " + Options.SERVICES.getName());
+        checkMenu.add("3. " + Options.WEATHERS.getName());
         checkMenu.add("0. Exit");
         checkMenu.add("select 0-3:");
     }

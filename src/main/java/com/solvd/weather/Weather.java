@@ -9,7 +9,7 @@ public abstract class Weather implements ICalc <Double>{
     
     private Double priceMod;
     private Double timeMod;
-    private static final Logger LOGGER = LogManager.getLogger();
+    protected Logger LOGGER = LogManager.getLogger();
     private DoubleBiFunction<Double> mult = (value, mod) -> value*mod;
 
     public Weather(Double weatherPriceMod, Double weatherTimeMod){
@@ -39,4 +39,6 @@ public abstract class Weather implements ICalc <Double>{
     public void changeTime(Double timeMod) {
         this.timeMod = timeMod;
     }
+    
+    public abstract void print();
 }

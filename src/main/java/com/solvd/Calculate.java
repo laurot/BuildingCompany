@@ -11,7 +11,7 @@ public class Calculate implements ICalculate<ILanguage>{
 
     private static final Logger LOGGER = LogManager.getLogger();
     
-    ObjDoubleBiConsumer<ILanguage> print = (lang, price, time) ->{
+    private ObjDoubleBiConsumer<ILanguage> print = (lang, price, time) ->{
         LOGGER.info("----------------------------------------------");
         LOGGER.info(lang.getCalculateAndText().get("priceText") + price);
         LOGGER.info(lang.getCalculateAndText().get("timeText") + time + lang.getCalculateAndText().get("days"));
