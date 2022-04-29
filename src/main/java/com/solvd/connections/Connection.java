@@ -6,8 +6,16 @@ public class Connection {
     
     public Connection(String name){
         this.name = name;
+        authorize();
+        connect();
     }
     public String getInfo(){  
         return name;
+    }
+
+    private void authorize(){
+    }
+
+    private void connect(){
     }
 }
