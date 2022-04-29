@@ -6,6 +6,7 @@ public class NormalSeason extends Weather {
 
     public NormalSeason() {
         super(DefaultValues.NORMALW.getPriceMod(), DefaultValues.NORMALW.getTimeMod());
+        print();
     }
 
     @Override

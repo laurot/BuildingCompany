@@ -7,6 +7,7 @@ public class Comercial extends Buildings {
     public Comercial() {
         super(DefaultValues.COMMERCIAL.getPriceMod(), 
         DefaultValues.COMMERCIAL.getTimeMod());
+        print();
     }
 
     @Override

@@ -7,6 +7,7 @@ public class NormalService extends Service {
     public NormalService() {
         super(DefaultValues.NORMALS.getPriceMod(),
         DefaultValues.NORMALS.getTimeMod());
+        print();
     }
 
     @Override

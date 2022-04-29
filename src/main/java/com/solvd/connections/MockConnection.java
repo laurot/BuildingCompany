@@ -1,13 +1,11 @@
 package com.solvd.connections;
 
 import java.util.ArrayList;
-
 import org.apache.logging.log4j.*;
 
 public class MockConnection {
 
     private static final ConnectionPool connectionPool = ConnectionPool.getInstance();
-
     private static final Logger LOGGER = LogManager.getLogger();
     
     public static void Connection(){

@@ -7,6 +7,7 @@ public class RainSeason extends Weather {
     public RainSeason() {
         super(DefaultValues.RAINY.getPriceMod(),
         DefaultValues.RAINY.getTimeMod());
+        print();
     }
 
     @Override

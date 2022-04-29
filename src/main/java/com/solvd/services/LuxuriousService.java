@@ -7,6 +7,7 @@ public class LuxuriousService extends Service {
     public LuxuriousService() {
         super(DefaultValues.LUXURIOUS.getPriceMod(),
         DefaultValues.LUXURIOUS.getTimeMod());
+        print();
     }
 
     @Override

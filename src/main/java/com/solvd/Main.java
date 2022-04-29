@@ -1,11 +1,11 @@
 package com.solvd;
 
-import com.solvd.connections.MockConnection;
+//import com.solvd.connections.MockConnection;
 
 public class Main {
     public static void main(String[] args) {
-        App.fileReadToFile();
-        MockConnection.Connection();
+        //App.fileReadToFile();
+        //MockConnection.Connection();
         Menu menu1 = new Menu();
         int value;
         do {

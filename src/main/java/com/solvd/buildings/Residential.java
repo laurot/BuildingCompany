@@ -7,6 +7,7 @@ public class Residential extends Buildings {
     public Residential() {
         super(DefaultValues.RESIDENTIAL.getPriceMod(),
         DefaultValues.RESIDENTIAL.getTimeMod());
+        print();
     }
 
     @Override

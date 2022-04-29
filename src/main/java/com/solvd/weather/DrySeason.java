@@ -6,6 +6,7 @@ public class DrySeason extends Weather {
 
     public DrySeason() {
         super(DefaultValues.DRY.getPriceMod(), DefaultValues.DRY.getTimeMod());
+        print();
     }
 
     @Override

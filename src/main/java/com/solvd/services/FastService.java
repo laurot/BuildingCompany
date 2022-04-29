@@ -7,6 +7,7 @@ public class FastService extends Service {
     public FastService() {
         super(DefaultValues.FAST.getPriceMod(),
         DefaultValues.FAST.getTimeMod());
+        print();
     }
 
     @Override

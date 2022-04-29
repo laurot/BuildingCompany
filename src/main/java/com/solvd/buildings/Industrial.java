@@ -7,6 +7,7 @@ public class Industrial extends Buildings {
     public Industrial() {
         super(DefaultValues.INDUSTRIAL.getPriceMod(), 
         DefaultValues.INDUSTRIAL.getTimeMod());
+        print();
     }
 
     @Override
