@@ -10,9 +10,9 @@ public class NormalSeason extends Weather {
     }
 
     @Override
-    public void print(){
-        LOGGER.info("Normal Season default values: \n Price modifier: " 
-        + DefaultValues.NORMALW.getPriceMod() + "\n Time modifier: "
-        + DefaultValues.NORMALW.getTimeMod());
+    public void print() {
+        LOGGER.info("Normal Season default values: \n Price modifier: "
+                + DefaultValues.NORMALW.getPriceMod() + "\n Time modifier: "
+                + DefaultValues.NORMALW.getTimeMod());
     }
 }

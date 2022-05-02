@@ -5,25 +5,25 @@ import com.solvd.interfaces.ICalc;
 import com.solvd.language.ILanguage;
 import org.apache.logging.log4j.*;
 
-public abstract class Weather implements ICalc <Double>{
-    
+public abstract class Weather implements ICalc<Double> {
+
     private Double priceMod;
     private Double timeMod;
     protected Logger LOGGER = LogManager.getLogger();
-    private DoubleBiFunction<Double> mult = (value, mod) -> value*mod;
+    private DoubleBiFunction<Double> mult = (value, mod) -> value * mod;
 
-    public Weather(Double weatherPriceMod, Double weatherTimeMod){
+    public Weather(Double weatherPriceMod, Double weatherTimeMod) {
         this.priceMod = weatherPriceMod;
         this.timeMod = weatherTimeMod;
     }
 
     @Override
-    public Double calcTime(Double time){
+    public Double calcTime(Double time) {
         return mult.apply(time, timeMod);
     }
-    
+
     @Override
-    public Double calcPrice(Double price){
+    public Double calcPrice(Double price) {
         return mult.apply(price, priceMod);
     }
 
@@ -39,6 +39,6 @@ public abstract class Weather implements ICalc <Double>{
     public void changeTime(Double timeMod) {
         this.timeMod = timeMod;
     }
-    
+
     public abstract void print();
 }

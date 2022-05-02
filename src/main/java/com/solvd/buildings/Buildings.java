@@ -9,8 +9,8 @@ public abstract class Buildings {
     private Double priceMod;
     private Double timeMod;
     protected Logger LOGGER = LogManager.getLogger();
-    
-    private ToDoubleTriFunction<Double,Integer,Double> mult = (mod, floors, sqMeters) ->{
+
+    private ToDoubleTriFunction<Double, Integer, Double> mult = (mod, floors, sqMeters) -> {
         return mod * floors * sqMeters;
     };
 
@@ -21,12 +21,12 @@ public abstract class Buildings {
     }
 
     public Double calcPrice(double sqMeters, int floors) {
-        Double totalP = mult.applyAsDouble(priceMod,floors,sqMeters);
+        Double totalP = mult.applyAsDouble(priceMod, floors, sqMeters);
         return totalP;
     }
 
     public Double calcTime(double sqMeters, int floors) {
-        Double totalT = mult.applyAsDouble(timeMod,floors,sqMeters);
+        Double totalT = mult.applyAsDouble(timeMod, floors, sqMeters);
         return totalT;
     }
 

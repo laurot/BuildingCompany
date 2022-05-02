@@ -19,7 +19,6 @@ public class Menu {
     ICalculate<ILanguage> calc = new Calculate();
     int l = 0;
 
-
     private Buildings com;
     private Buildings ind;
     private Buildings res;
@@ -30,7 +29,7 @@ public class Menu {
     private Weather wet;
     private Weather nwe;
 
-    public Menu(){
+    public Menu() {
         com = new Comercial();
         ind = new Industrial();
         res = new Residential();
@@ -43,7 +42,7 @@ public class Menu {
     }
 
     public int mainMenu() {
-        
+
         int select;
         LOGGER.info("----------------------------------------------");
         LOGGER.info(lang.getCalculateAndText().get("current") + country.getName());
@@ -99,7 +98,7 @@ public class Menu {
         return select;
     }
 
-    private void checkValues(){
+    private void checkValues() {
 
         int select;
 
@@ -180,7 +179,7 @@ public class Menu {
         }
     }
 
-    private void calcu(){
+    private void calcu() {
 
         Input input = new Input();
 
@@ -196,35 +195,35 @@ public class Menu {
 
         switch (buildType) {
             case 2:
-                //Residential
+                // Residential
                 calcBuild = res;
             case 3:
-                //Industrial
+                // Industrial
                 calcBuild = ind;
             default:
-                //Commercial
-                calcBuild = com;            
+                // Commercial
+                calcBuild = com;
         }
         switch (weather) {
             case 2:
-                //Dry Season
+                // Dry Season
                 calcWeath = dry;
             case 3:
-                //Rainy Season
+                // Rainy Season
                 calcWeath = wet;
             default:
-                //Normal Season
+                // Normal Season
                 calcWeath = nwe;
         }
         switch (serviceType) {
             case 2:
-                //Fast Service
+                // Fast Service
                 calcServ = fas;
             case 3:
-                //Luxurious Service
+                // Luxurious Service
                 calcServ = lux;
             default:
-                //Normal Service
+                // Normal Service
                 calcServ = nse;
         }
         calc.calculate(country, lang, floors, sqMeters, calcBuild, calcWeath, calcServ);

@@ -11,7 +11,7 @@ import com.solvd.language.ILanguage;
 
 public class Input implements IIn<Double> {
     private static Scanner sc = new Scanner(System.in);
-    private static final Logger LOGGER = LogManager.getLogger(); 
+    private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
     public int askBuildingType(ILanguage lang) {
@@ -24,10 +24,10 @@ public class Input implements IIn<Double> {
         LOGGER.info(lang.getChangeText().get("select"));
         select = sc.nextInt();
 
-        try{
+        try {
             if (select > 3 || select < 1)
-            throw new NotValidOptionException();
-        }catch(NotValidOptionException a){
+                throw new NotValidOptionException();
+        } catch (NotValidOptionException a) {
             LOGGER.info("Invalid option");
             askBuildingType(lang);
         }
@@ -45,10 +45,10 @@ public class Input implements IIn<Double> {
         LOGGER.info(lang.getChangeText().get("select"));
         select = sc.nextInt();
 
-        try{
+        try {
             if (select > 3 || select < 1)
-            throw new NotValidOptionException();
-        }catch(NotValidOptionException a){
+                throw new NotValidOptionException();
+        } catch (NotValidOptionException a) {
             LOGGER.info("Invalid option");
             select = askServiceType(lang);
         }
@@ -66,10 +66,10 @@ public class Input implements IIn<Double> {
         LOGGER.info(lang.getChangeText().get("select"));
         select = sc.nextInt();
 
-        try{
+        try {
             if (select > 3 || select < 1)
-            throw new NotValidOptionException();
-        }catch(NotValidOptionException a){
+                throw new NotValidOptionException();
+        } catch (NotValidOptionException a) {
             LOGGER.info("Invalid option");
             select = askWeather(lang);
         }
@@ -83,11 +83,11 @@ public class Input implements IIn<Double> {
         Double sqMetres;
         LOGGER.info(lang.getInputText().get("sqMetres"));
         sqMetres = sc.nextDouble();
-        try{
-        if (sqMetres < 1)
-            throw new NegativeNumberException();
-            
-        }catch(NegativeNumberException nne){
+        try {
+            if (sqMetres < 1)
+                throw new NegativeNumberException();
+
+        } catch (NegativeNumberException nne) {
             LOGGER.info("Value has to be at least 1");
             sqMetres = askSqMetres(lang);
         }
@@ -95,20 +95,20 @@ public class Input implements IIn<Double> {
     }
 
     @Override
-    public int askFloors(ILanguage lang){
+    public int askFloors(ILanguage lang) {
 
         int floors;
         LOGGER.info(lang.getInputText().get("floors"));
         floors = sc.nextInt();
-        try{
-        if (floors < 1)
-            throw new NegativeNumberException();
-        if (floors > 26)
-            throw new TooManyFloorsException();
-        }catch(NegativeNumberException nne){
+        try {
+            if (floors < 1)
+                throw new NegativeNumberException();
+            if (floors > 26)
+                throw new TooManyFloorsException();
+        } catch (NegativeNumberException nne) {
             LOGGER.info("Value has to be at least 1");
             floors = askFloors(lang);
-        }catch(TooManyFloorsException tmfe){
+        } catch (TooManyFloorsException tmfe) {
             LOGGER.info("This company can only do 26 floors");
             floors = askFloors(lang);
         }

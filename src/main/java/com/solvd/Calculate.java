@@ -7,19 +7,19 @@ import com.solvd.services.*;
 import com.solvd.weather.*;
 import org.apache.logging.log4j.*;
 
-public class Calculate implements ICalculate<ILanguage>{
+public class Calculate implements ICalculate<ILanguage> {
 
     private static final Logger LOGGER = LogManager.getLogger();
-    
-    private ObjDoubleBiConsumer<ILanguage> print = (lang, price, time) ->{
+
+    private ObjDoubleBiConsumer<ILanguage> print = (lang, price, time) -> {
         LOGGER.info("----------------------------------------------");
         LOGGER.info(lang.getCalculateAndText().get("priceText") + price);
         LOGGER.info(lang.getCalculateAndText().get("timeText") + time + lang.getCalculateAndText().get("days"));
         LOGGER.info("----------------------------------------------");
     };
 
-    public void calculate(ITax country, ILanguage lang,int floors,double sqMeters,
-                          Buildings calcBuild, Weather calcWeath, Service calcServ) {
+    public void calculate(ITax country, ILanguage lang, int floors, double sqMeters,
+            Buildings calcBuild, Weather calcWeath, Service calcServ) {
         double time = 0.0;
         double price = 0.0;
 

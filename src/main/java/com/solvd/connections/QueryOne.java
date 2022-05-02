@@ -2,12 +2,12 @@ package com.solvd.connections;
 
 import org.apache.logging.log4j.*;
 
-public class QueryOne implements Runnable{
+public class QueryOne implements Runnable {
 
     private String text;
     private final Logger LOGGER = LogManager.getLogger();
 
-    public QueryOne(String text){
+    public QueryOne(String text) {
         this.text = text;
     }
 

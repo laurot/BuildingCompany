@@ -51,7 +51,7 @@ public class Spanish implements ILanguage {
         checkMenu.add("Menu:");
         checkMenu.add("Que valores?");
         checkMenu.add("1. " + OptionEs.BUILDINGS);
-        checkMenu.add("2. "+ OptionEs.SERVICES);
+        checkMenu.add("2. " + OptionEs.SERVICES);
         checkMenu.add("3. " + OptionEs.WEATHERS);
         checkMenu.add("0. Salir");
         checkMenu.add("Seleccionar 0-3:");

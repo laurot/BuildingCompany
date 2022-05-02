@@ -7,9 +7,10 @@ public enum OptionEs {
 
     private String name;
 
-    OptionEs(String name){
+    OptionEs(String name) {
         this.name = name;
     }
+
     public String getName() {
         return name;
     }

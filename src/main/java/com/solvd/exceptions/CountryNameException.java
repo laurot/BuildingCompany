@@ -1,5 +1,5 @@
 package com.solvd.exceptions;
 
-public class CountryNameException extends RuntimeException{
-    
+public class CountryNameException extends RuntimeException {
+
 }

@@ -17,7 +17,7 @@ public class Change implements IChange {
     private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
-    public void changeBuildings(ILanguage lang, Buildings com,Buildings res,Buildings ind) {
+    public void changeBuildings(ILanguage lang, Buildings com, Buildings res, Buildings ind) {
 
         LOGGER.info(lang.getChangeText().get("menu"));
         LOGGER.info(lang.getChangeText().get("which"));
@@ -73,7 +73,7 @@ public class Change implements IChange {
     }
 
     @Override
-    public void changeServices(ILanguage lang, Service nse, Service fas, Service lux){
+    public void changeServices(ILanguage lang, Service nse, Service fas, Service lux) {
 
         LOGGER.info(lang.getChangeText().get("menu"));
         LOGGER.info(lang.getChangeText().get("which"));
@@ -190,8 +190,8 @@ public class Change implements IChange {
     }
 
     @Override
-    public Country changeCountry(ILanguage lang){
-        try{
+    public Country changeCountry(ILanguage lang) {
+        try {
             LOGGER.info(lang.getChangeText().get("whatcountry"));
             String countryName = sc.next();
             if (hasNumbers(countryName))
@@ -200,22 +200,22 @@ public class Change implements IChange {
             Double countryRate = (sc.nextDouble() / 100) + 1;
             if (countryRate < 1 || countryRate > 2)
                 throw new NotValidPercentageException();
-            //Country country = new Country(countryName, countryRate);
-            //return country;
+            // Country country = new Country(countryName, countryRate);
+            // return country;
 
-            //Reflection
+            // Reflection
             Constructor<?>[] cons = Country.class.getDeclaredConstructors();
             Country count = (Country) cons[0].newInstance(countryName, countryRate);
             return count;
-            
-        }catch(CountryNameException cne){
+
+        } catch (CountryNameException cne) {
             LOGGER.warn("Not a valide name");
             return changeCountry(lang);
-        }catch(NotValidPercentageException nvpe){
+        } catch (NotValidPercentageException nvpe) {
             LOGGER.warn("Not a valid percentage");
             return changeCountry(lang);
-        }catch (InstantiationException | IllegalAccessException | IllegalArgumentException
-                    | InvocationTargetException e) {
+        } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+                | InvocationTargetException e) {
             e.printStackTrace();
             return changeCountry(lang);
         }
@@ -230,8 +230,9 @@ public class Change implements IChange {
                 sb.append(c);
             }
         }
-        if (!sb.toString().equals("")){
-            return true;}
+        if (!sb.toString().equals("")) {
+            return true;
+        }
         return false;
     }
 }

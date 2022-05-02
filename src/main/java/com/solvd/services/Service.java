@@ -27,7 +27,6 @@ public abstract class Service implements ICalc<Double> {
         return price;
     }
 
-    
     public void checkValues(ILanguage lang) {
 
         LOGGER.info(lang.getCalculateAndText().get("priceSetted") + priceMod);

@@ -6,14 +6,14 @@ public class RainSeason extends Weather {
 
     public RainSeason() {
         super(DefaultValues.RAINY.getPriceMod(),
-        DefaultValues.RAINY.getTimeMod());
+                DefaultValues.RAINY.getTimeMod());
         print();
     }
 
     @Override
-    public void print(){
-        LOGGER.info("Rainy season default values: \n Price modifier: " 
-        + DefaultValues.RAINY.getPriceMod() + "\n Time modifier: "
-        + DefaultValues.RAINY.getTimeMod());
+    public void print() {
+        LOGGER.info("Rainy season default values: \n Price modifier: "
+                + DefaultValues.RAINY.getPriceMod() + "\n Time modifier: "
+                + DefaultValues.RAINY.getTimeMod());
     }
 }

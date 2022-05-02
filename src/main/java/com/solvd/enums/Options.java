@@ -6,9 +6,11 @@ public enum Options {
     WEATHERS("Weathers");
 
     private String name;
-    Options(String name){
+
+    Options(String name) {
         this.name = name;
     }
+
     public String getName() {
         return name;
     }
