@@ -1,10 +1,10 @@
 package com.solvd;
 
-import com.solvd.buildings.Buildings;
 import com.solvd.interfaces.*;
 import com.solvd.language.ILanguage;
-import com.solvd.services.*;
-import com.solvd.weather.*;
+import com.solvd.modifiers.Buildings;
+import com.solvd.modifiers.Service;
+import com.solvd.modifiers.Weather;
 import org.apache.logging.log4j.*;
 
 public class Calculate implements ICalculate<ILanguage> {
@@ -23,8 +23,8 @@ public class Calculate implements ICalculate<ILanguage> {
         double time = 0.0;
         double price = 0.0;
 
-        price = calcServ.calcPrice(calcWeath.calcPrice(calcBuild.calcPrice(sqMeters, floors)));
-        time = calcServ.calcTime(calcWeath.calcTime(calcBuild.calcTime(sqMeters, floors)));
+        price = calcServ.calcPrice(calcWeath.calcPrice(calcBuild.calcPrice(calcBuild.calcPrice(sqMeters, floors))));
+        time = calcServ.calcTime(calcWeath.calcTime(calcBuild.calcTime(calcBuild.calcTime(sqMeters, floors))));
         price = country.tax(price);
         print.accept(lang, price, time);
     }

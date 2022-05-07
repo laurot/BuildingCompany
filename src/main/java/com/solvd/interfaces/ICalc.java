@@ -2,7 +2,7 @@ package com.solvd.interfaces;
 
 public interface ICalc<T> {
 
-    T calcTime(T timeMod);
+    T calcTime(T time);
 
-    T calcPrice(T priceMod);
+    T calcPrice(T price);
 }

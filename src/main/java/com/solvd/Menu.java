@@ -1,11 +1,12 @@
 package com.solvd;
 
-import com.solvd.buildings.*;
+import com.solvd.enums.DefaultValues;
 import com.solvd.exceptions.*;
 import com.solvd.interfaces.*;
-import com.solvd.services.*;
-import com.solvd.weather.*;
 import com.solvd.language.*;
+import com.solvd.modifiers.Buildings;
+import com.solvd.modifiers.Service;
+import com.solvd.modifiers.Weather;
 import org.apache.logging.log4j.*;
 import java.util.Scanner;
 
@@ -30,15 +31,15 @@ public class Menu {
     private Weather nwe;
 
     public Menu() {
-        com = new Comercial();
-        ind = new Industrial();
-        res = new Residential();
-        fas = new FastService();
-        lux = new LuxuriousService();
-        nse = new NormalService();
-        dry = new DrySeason();
-        wet = new RainSeason();
-        nwe = new NormalSeason();
+        com = new Buildings(DefaultValues.COMMERCIAL.getPriceMod(), DefaultValues.COMMERCIAL.getTimeMod());
+        ind = new Buildings(DefaultValues.INDUSTRIAL.getPriceMod(), DefaultValues.INDUSTRIAL.getTimeMod());
+        res = new Buildings(DefaultValues.RESIDENTIAL.getPriceMod(), DefaultValues.RESIDENTIAL.getTimeMod());
+        fas = new Service(DefaultValues.FAST.getPriceMod(), DefaultValues.FAST.getTimeMod());
+        lux = new Service(DefaultValues.LUXURIOUS.getPriceMod(), DefaultValues.LUXURIOUS.getTimeMod());
+        nse = new Service(DefaultValues.NORMALS.getPriceMod(), DefaultValues.NORMALS.getTimeMod());
+        dry = new Weather(DefaultValues.DRY.getPriceMod(), DefaultValues.DRY.getTimeMod());
+        wet = new Weather(DefaultValues.RAINY.getPriceMod(), DefaultValues.RAINY.getTimeMod());
+        nwe = new Weather(DefaultValues.NORMALW.getPriceMod(), DefaultValues.NORMALW.getTimeMod());
     }
 
     public int mainMenu() {

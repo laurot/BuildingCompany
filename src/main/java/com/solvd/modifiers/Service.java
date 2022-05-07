@@ -1,44 +1,42 @@
-package com.solvd.weather;
+package com.solvd.modifiers;
 
-import com.solvd.interfaces.DoubleBiFunction;
-import com.solvd.interfaces.ICalc;
 import com.solvd.language.ILanguage;
 import org.apache.logging.log4j.*;
 
-public abstract class Weather implements ICalc<Double> {
+public class Service extends Modifier {
 
-    private Double priceMod;
-    private Double timeMod;
     protected Logger LOGGER = LogManager.getLogger();
-    private DoubleBiFunction<Double> mult = (value, mod) -> value * mod;
 
-    public Weather(Double weatherPriceMod, Double weatherTimeMod) {
-        this.priceMod = weatherPriceMod;
-        this.timeMod = weatherTimeMod;
+    public Service(Double servPriceMod, Double servTimeMod) {
+        this.priceMod = servPriceMod;
+        this.timeMod = servTimeMod;
     }
 
     @Override
     public Double calcTime(Double time) {
-        return mult.apply(time, timeMod);
+        time = time * timeMod;
+        return time;
     }
 
     @Override
     public Double calcPrice(Double price) {
-        return mult.apply(price, priceMod);
+        price = price * priceMod;
+        return price;
     }
 
+    @Override
     public void checkValues(ILanguage lang) {
         LOGGER.info(lang.getCalculateAndText().get("priceSetted") + priceMod);
         LOGGER.info(lang.getCalculateAndText().get("timeSetted") + timeMod);
     }
 
+    @Override
     public void changePrice(Double priceMod) {
         this.priceMod = priceMod;
     }
 
+    @Override
     public void changeTime(Double timeMod) {
         this.timeMod = timeMod;
     }
-
-    public abstract void print();
 }

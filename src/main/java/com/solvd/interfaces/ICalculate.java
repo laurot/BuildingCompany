@@ -1,8 +1,8 @@
 package com.solvd.interfaces;
 
-import com.solvd.buildings.Buildings;
-import com.solvd.services.Service;
-import com.solvd.weather.Weather;
+import com.solvd.modifiers.Buildings;
+import com.solvd.modifiers.Service;
+import com.solvd.modifiers.Weather;
 
 public interface ICalculate<T> {
 

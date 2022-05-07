@@ -1,11 +1,11 @@
 package com.solvd;
 
-import com.solvd.buildings.*;
 import com.solvd.exceptions.*;
 import com.solvd.interfaces.IChange;
 import com.solvd.language.ILanguage;
-import com.solvd.services.*;
-import com.solvd.weather.*;
+import com.solvd.modifiers.Buildings;
+import com.solvd.modifiers.Service;
+import com.solvd.modifiers.Weather;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
