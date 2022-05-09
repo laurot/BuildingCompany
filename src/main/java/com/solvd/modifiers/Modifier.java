@@ -14,14 +14,9 @@ public abstract class Modifier implements ICalc<Double> {
     public Double getPriceMod() {
         return priceMod;
     }
-    public void setPriceMod(Double priceMod) {
-        this.priceMod = priceMod;
-    }
+
     public Double getTimeMod() {
         return timeMod;
-    }
-    public void setTimeMod(Double timeMod) {
-        this.timeMod = timeMod;
     }
 
     public void checkValues(ILanguage lang) {
@@ -29,6 +24,6 @@ public abstract class Modifier implements ICalc<Double> {
         LOGGER.info(lang.getCalculateAndText().get("timeSetted") + timeMod);
     }
     
-    abstract void changePrice(Double priceMod);
-    abstract void changeTime(Double timeMod);
+    abstract void setPriceMod(Double priceMod);
+    abstract void setTimeMod(Double timeMod);
 }

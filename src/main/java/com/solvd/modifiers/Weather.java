@@ -1,7 +1,6 @@
 package com.solvd.modifiers;
 
 import com.solvd.interfaces.DoubleBiFunction;
-import com.solvd.language.ILanguage;
 import org.apache.logging.log4j.*;
 
 public class Weather extends Modifier {
@@ -25,18 +24,12 @@ public class Weather extends Modifier {
     }
 
     @Override
-    public void checkValues(ILanguage lang) {
-        LOGGER.info(lang.getCalculateAndText().get("priceSetted") + priceMod);
-        LOGGER.info(lang.getCalculateAndText().get("timeSetted") + timeMod);
-    }
-
-    @Override
-    public void changePrice(Double priceMod) {
+    public void setPriceMod(Double priceMod) {
         this.priceMod = priceMod;
     }
 
     @Override
-    public void changeTime(Double timeMod) {
+    public void setTimeMod(Double timeMod) {
         this.timeMod = timeMod;
     }
 }

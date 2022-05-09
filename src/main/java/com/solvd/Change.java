@@ -41,8 +41,8 @@ public class Change implements IChange {
                 newPrice = sc.nextDouble();
                 LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextDouble();
-                com.changePrice(newPrice);
-                com.changeTime(newTime);
+                com.setPriceMod(newPrice);
+                com.setTimeMod(newTime);
 
                 break;
             case 2:
@@ -52,8 +52,8 @@ public class Change implements IChange {
                 newPrice = sc.nextDouble();
                 LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextDouble();
-                res.changePrice(newPrice);
-                res.changeTime(newTime);
+                res.setPriceMod(newPrice);
+                res.setTimeMod(newTime);
 
                 break;
             case 3:
@@ -63,8 +63,8 @@ public class Change implements IChange {
                 newPrice = sc.nextDouble();
                 LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextDouble();
-                ind.changePrice(newPrice);
-                ind.changeTime(newTime);
+                ind.setPriceMod(newPrice);
+                ind.setTimeMod(newTime);
                 break;
             default:
                 // In case of invalid number, ask again
@@ -97,8 +97,8 @@ public class Change implements IChange {
                 newPrice = sc.nextDouble();
                 LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextDouble();
-                nse.changePrice(newPrice);
-                nse.changeTime(newTime);
+                nse.setPriceMod(newPrice);
+                nse.setTimeMod(newTime);
                 break;
             case 2:
                 // Fast Service
@@ -107,8 +107,8 @@ public class Change implements IChange {
                 newPrice = sc.nextDouble();
                 LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextDouble();
-                fas.changePrice(newPrice);
-                fas.changeTime(newTime);
+                fas.setPriceMod(newPrice);
+                fas.setTimeMod(newTime);
 
                 break;
             case 3:
@@ -119,8 +119,8 @@ public class Change implements IChange {
                 newPrice = sc.nextDouble();
                 LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextDouble();
-                lux.changePrice(newPrice);
-                lux.changeTime(newTime);
+                lux.setPriceMod(newPrice);
+                lux.setTimeMod(newTime);
 
                 break;
             default:
@@ -158,8 +158,8 @@ public class Change implements IChange {
                     throw new NegativeNumberException();
                 LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextDouble();
-                nwe.changePrice(newPrice);
-                nwe.changeTime(newTime);
+                nwe.setPriceMod(newPrice);
+                nwe.setTimeMod(newTime);
                 break;
             case 2:
                 // Rain Season
@@ -168,8 +168,8 @@ public class Change implements IChange {
                 newPrice = sc.nextDouble();
                 LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextDouble();
-                wet.changePrice(newPrice);
-                wet.changeTime(newTime);
+                wet.setPriceMod(newPrice);
+                wet.setTimeMod(newTime);
 
                 break;
             case 3:
@@ -179,8 +179,8 @@ public class Change implements IChange {
                 newPrice = sc.nextDouble();
                 LOGGER.info(lang.getChangeText().get("newtime"));
                 newTime = sc.nextDouble();
-                dry.changePrice(newPrice);
-                dry.changeTime(newTime);
+                dry.setPriceMod(newPrice);
+                dry.setTimeMod(newTime);
                 break;
             default:
                 // In case of invalid number, ask again

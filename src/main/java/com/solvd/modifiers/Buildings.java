@@ -24,22 +24,22 @@ public class Buildings extends Modifier{
     }
 
     @Override
-    public void changePrice(Double priceMod) {
+    public void setPriceMod(Double priceMod) {
         this.priceMod = priceMod;
     }
 
     @Override
-    public void changeTime(Double timeMod) {
+    public void setTimeMod(Double timeMod) {
         this.timeMod = timeMod;
     }
 
     @Override
     public Double calcTime(Double time) {
-        return time*timeMod;
+        return time*timeMod/2;
     }
 
     @Override
     public Double calcPrice(Double price) {
-        return price*priceMod;
+        return price*priceMod/2;
     }
 }
