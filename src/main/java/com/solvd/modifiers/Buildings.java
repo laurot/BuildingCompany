@@ -35,11 +35,11 @@ public class Buildings extends Modifier{
 
     @Override
     public Double calcTime(Double time) {
-        return time*timeMod/2;
+        return (time/2)*timeMod;
     }
 
     @Override
     public Double calcPrice(Double price) {
-        return price*priceMod/2;
+        return (price/2)*priceMod/2;
     }
 }
